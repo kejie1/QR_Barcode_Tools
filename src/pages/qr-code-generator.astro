@@ -169,6 +169,101 @@ const description =
                     </div>
                 </div>
 
+                <!-- Logo Upload Section -->
+                <div class="pt-4 border-t border-slate-100 space-y-4">
+                    <h3 class="text-sm font-bold text-slate-700">
+                        Add Custom Logo (Optional)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- File upload -->
+                        <div class="space-y-2">
+                            <label
+                                class="block text-xs font-semibold text-slate-500 uppercase tracking-wider"
+                                >Upload Image</label
+                            >
+                            <div class="flex items-center space-x-3">
+                                <label
+                                    for="qr-logo"
+                                    class="cursor-pointer inline-flex items-center space-x-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-2 px-4 rounded-xl text-xs transition-colors border border-slate-300"
+                                >
+                                    <svg
+                                        class="h-4 w-4 text-slate-500"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                                        ></path>
+                                    </svg>
+                                    <span>Choose File</span>
+                                </label>
+                                <input
+                                    type="file"
+                                    id="qr-logo"
+                                    accept="image/*"
+                                    class="hidden"
+                                />
+                                <span
+                                    id="logo-filename"
+                                    class="text-xs text-slate-400 truncate max-w-[150px]"
+                                    >No logo selected</span
+                                >
+                                <button
+                                    id="btn-clear-logo"
+                                    type="button"
+                                    class="text-xs font-bold text-red-500 hover:text-red-600 hidden"
+                                    >Remove</button
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Logo Controls -->
+                        <div class="space-y-3">
+                            <div>
+                                <label
+                                    for="logo-size"
+                                    class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5"
+                                    >Logo Size (<span id="logo-size-val"
+                                        >20</span
+                                    >%)</label
+                                >
+                                <input
+                                    type="range"
+                                    id="logo-size"
+                                    min="10"
+                                    max="28"
+                                    value="20"
+                                    class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-500"
+                                />
+                            </div>
+                            <div class="flex items-center">
+                                <input
+                                    type="checkbox"
+                                    id="logo-border"
+                                    checked
+                                    class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-200"
+                                />
+                                <label
+                                    for="logo-border"
+                                    class="ml-2 text-xs font-semibold text-slate-700 select-none"
+                                    >Draw clear background border</label
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-slate-400 italic">
+                        <strong>Tip:</strong> If you upload a logo, the generator
+                        will automatically switch the <strong
+                            >Error Correction Level to H (30%)</strong
+                        >. This ensures the QR code is still readable with the
+                        logo in the center.
+                    </p>
+                </div>
+
                 <div class="flex space-x-3 pt-2">
                     <button
                         id="btn-generate"
@@ -446,6 +541,24 @@ const description =
         "qr-bg-text",
     ) as HTMLInputElement;
 
+    // Logo Upload elements
+    const qrLogoInput = document.getElementById("qr-logo") as HTMLInputElement;
+    const logoFilenameSpan = document.getElementById(
+        "logo-filename",
+    ) as HTMLSpanElement;
+    const btnClearLogo = document.getElementById(
+        "btn-clear-logo",
+    ) as HTMLButtonElement;
+    const logoSizeSlider = document.getElementById(
+        "logo-size",
+    ) as HTMLInputElement;
+    const logoSizeValSpan = document.getElementById(
+        "logo-size-val",
+    ) as HTMLSpanElement;
+    const logoBorderCheckbox = document.getElementById(
+        "logo-border",
+    ) as HTMLInputElement;
+
     const btnGenerate = document.getElementById(
         "btn-generate",
     ) as HTMLButtonElement;
@@ -479,6 +592,7 @@ const description =
 
     let currentPngDataUrl = "";
     let currentSvgContent = "";
+    let uploadedLogoDataUrl = "";
 
     // 同步颜色输入框
     fgColorInput.addEventListener("input", (e) => {
@@ -500,6 +614,44 @@ const description =
         }
     });
 
+    // 监听 Logo 上传
+    qrLogoInput.addEventListener("change", (e) => {
+        const file = (e.target as HTMLInputElement).files?.[0];
+        if (file) {
+            logoFilenameSpan.textContent = file.name;
+            btnClearLogo.classList.remove("hidden");
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                uploadedLogoDataUrl = event.target?.result as string;
+                // Logo 推荐使用 H 级别纠错
+                levelSelect.value = "H";
+                generateQRCode();
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // 清空 Logo
+    btnClearLogo.addEventListener("click", () => {
+        qrLogoInput.value = "";
+        uploadedLogoDataUrl = "";
+        logoFilenameSpan.textContent = "No logo selected";
+        btnClearLogo.classList.add("hidden");
+        generateQRCode();
+    });
+
+    // 调节尺寸滑块
+    logoSizeSlider.addEventListener("input", (e) => {
+        const val = (e.target as HTMLInputElement).value;
+        logoSizeValSpan.textContent = val;
+    });
+    logoSizeSlider.addEventListener("change", () => {
+        generateQRCode();
+    });
+    logoBorderCheckbox.addEventListener("change", () => {
+        generateQRCode();
+    });
+
     // 生成主函数
     async function generateQRCode() {
         const content = contentInput.value.trim();
@@ -511,13 +663,18 @@ const description =
         errorMessage.classList.add("hidden");
 
         const size = parseInt(sizeSelect.value, 10);
-        const level = levelSelect.value as "L" | "M" | "Q" | "H";
+        const level = (uploadedLogoDataUrl ? "H" : levelSelect.value) as
+            | "L"
+            | "M"
+            | "Q"
+            | "H";
         const fgColor = fgColorInput.value;
         const bgColor = bgColorInput.value;
 
         try {
-            // 1. 生成 PNG
-            const pngUrl = await QRCode.toDataURL(content, {
+            // 1. 生成基础/带 Logo 的 Canvas
+            const canvas = document.createElement("canvas");
+            await QRCode.toCanvas(canvas, content, {
                 width: size,
                 margin: 2,
                 errorCorrectionLevel: level,
@@ -526,11 +683,69 @@ const description =
                     light: bgColor,
                 },
             });
+
+            // 2. 如果有 Logo，则绘制到 Canvas 中央
+            if (uploadedLogoDataUrl) {
+                await new Promise<void>((resolve, reject) => {
+                    const img = new Image();
+                    img.crossOrigin = "anonymous";
+                    img.onload = () => {
+                        const ctx = canvas.getContext("2d");
+                        if (ctx) {
+                            const logoPercent =
+                                parseInt(logoSizeSlider.value, 10) / 100;
+                            const logoSize = size * logoPercent;
+                            const logoX = (size - logoSize) / 2;
+                            const logoY = (size - logoSize) / 2;
+
+                            if (logoBorderCheckbox.checked) {
+                                // 在中央绘制白底矩形/圆角矩形
+                                const padding = logoSize * 0.15;
+                                ctx.fillStyle = bgColor;
+                                ctx.beginPath();
+                                // 圆角矩形支持
+                                if (typeof ctx.roundRect === "function") {
+                                    ctx.roundRect(
+                                        logoX - padding,
+                                        logoY - padding,
+                                        logoSize + padding * 2,
+                                        logoSize + padding * 2,
+                                        logoSize * 0.15,
+                                    );
+                                } else {
+                                    ctx.rect(
+                                        logoX - padding,
+                                        logoY - padding,
+                                        logoSize + padding * 2,
+                                        logoSize + padding * 2,
+                                    );
+                                }
+                                ctx.fill();
+                            }
+
+                            // 绘制 logo 图像
+                            ctx.drawImage(
+                                img,
+                                logoX,
+                                logoY,
+                                logoSize,
+                                logoSize,
+                            );
+                        }
+                        resolve();
+                    };
+                    img.onerror = (err) => reject(err);
+                    img.src = uploadedLogoDataUrl;
+                });
+            }
+
+            // 输出 PNG dataURL
+            const pngUrl = canvas.toDataURL("image/png");
             currentPngDataUrl = pngUrl;
             qrImage.src = pngUrl;
 
-            // 2. 生成 SVG
-            const svgString = await QRCode.toString(content, {
+            // 3. 生成 SVG 并合并 Logo 嵌入
+            let svgString = await QRCode.toString(content, {
                 type: "svg",
                 width: size,
                 margin: 2,
@@ -540,9 +755,58 @@ const description =
                     light: bgColor,
                 },
             });
+
+            if (uploadedLogoDataUrl) {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(svgString, "image/svg+xml");
+                const svgEl = doc.querySelector("svg");
+                if (svgEl) {
+                    const logoPercent =
+                        parseInt(logoSizeSlider.value, 10) / 100;
+                    const logoSize = size * logoPercent;
+                    const logoX = (size - logoSize) / 2;
+                    const logoY = (size - logoSize) / 2;
+
+                    if (logoBorderCheckbox.checked) {
+                        const padding = logoSize * 0.15;
+                        const rect = doc.createElementNS(
+                            "http://www.w3.org/2000/svg",
+                            "rect",
+                        );
+                        rect.setAttribute("x", (logoX - padding).toString());
+                        rect.setAttribute("y", (logoY - padding).toString());
+                        rect.setAttribute(
+                            "width",
+                            (logoSize + padding * 2).toString(),
+                        );
+                        rect.setAttribute(
+                            "height",
+                            (logoSize + padding * 2).toString(),
+                        );
+                        rect.setAttribute("fill", bgColor);
+                        rect.setAttribute("rx", (logoSize * 0.15).toString());
+                        rect.setAttribute("ry", (logoSize * 0.15).toString());
+                        svgEl.appendChild(rect);
+                    }
+
+                    const image = doc.createElementNS(
+                        "http://www.w3.org/2000/svg",
+                        "image",
+                    );
+                    image.setAttribute("href", uploadedLogoDataUrl);
+                    image.setAttribute("x", logoX.toString());
+                    image.setAttribute("y", logoY.toString());
+                    image.setAttribute("width", logoSize.toString());
+                    image.setAttribute("height", logoSize.toString());
+                    svgEl.appendChild(image);
+
+                    const serializer = new XMLSerializer();
+                    svgString = serializer.serializeToString(doc);
+                }
+            }
             currentSvgContent = svgString;
 
-            // 3. UI 切换
+            // 4. UI 切换
             previewPlaceholder.classList.add("hidden");
             qrContainer.classList.remove("hidden");
             actionButtons.classList.remove("hidden");
@@ -570,6 +834,16 @@ const description =
         fgColorText.value = "#000000";
         bgColorInput.value = "#ffffff";
         bgColorText.value = "#ffffff";
+
+        // Reset logo inputs
+        qrLogoInput.value = "";
+        uploadedLogoDataUrl = "";
+        logoFilenameSpan.textContent = "No logo selected";
+        btnClearLogo.classList.add("hidden");
+        logoSizeSlider.value = "20";
+        logoSizeValSpan.textContent = "20";
+        logoBorderCheckbox.checked = true;
+
         errorMessage.classList.add("hidden");
 
         // reset preview
