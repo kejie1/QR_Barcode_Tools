@@ -1,0 +1,453 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+    description: string;
+    canonicalUrl?: string;
+}
+
+const { title, description, canonicalUrl } = Astro.props;
+const siteName = "QR Barcode Tools";
+const currentUrl =
+    canonicalUrl ||
+    new URL(
+        Astro.url.pathname,
+        Astro.site || "https://qrbarcodetools.com",
+    ).toString();
+
+// 获取当前路径来高亮导航
+const pathname = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+
+        <!-- SEO -->
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={currentUrl} />
+
+        <!-- Open Graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:site_name" content={siteName} />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={currentUrl} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+    </head>
+    <body class="flex flex-col min-h-screen bg-slate-50 text-slate-800">
+        <!-- Header -->
+        <header
+            class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-sm border-b border-slate-200"
+        >
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center space-x-2 group">
+                            <!-- Inline Logo SVG -->
+                            <svg
+                                class="h-8 w-8 text-brand-500 transition-transform group-hover:scale-105"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <rect x="3" y="3" width="18" height="18" rx="2"
+                                ></rect>
+                                <path d="M7 7h4v4H7z"></path>
+                                <path d="M13 7h4v4h-4z"></path>
+                                <path d="M7 13h4v4H7z"></path>
+                                <path d="M17 17h.01"></path>
+                                <path d="M13 13h1"></path>
+                                <path d="M13 17h1"></path>
+                                <path d="M17 13h1"></path>
+                            </svg>
+                            <span
+                                class="font-bold text-xl tracking-tight text-slate-900 group-hover:text-brand-600 transition-colors"
+                            >
+                                QR Barcode <span class="text-brand-500"
+                                    >Tools</span
+                                >
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Desktop Nav -->
+                    <nav class="hidden md:flex space-x-6">
+                        <a
+                            href="/qr-code-generator/"
+                            class={`text-sm font-medium transition-colors hover:text-brand-500 ${pathname.startsWith("/qr-code-generator") ? "text-brand-500" : "text-slate-600"}`}
+                            >QR Generator</a
+                        >
+                        <a
+                            href="/barcode-generator/"
+                            class={`text-sm font-medium transition-colors hover:text-brand-500 ${pathname.startsWith("/barcode-generator") ? "text-brand-500" : "text-slate-600"}`}
+                            >Barcode Generator</a
+                        >
+
+                        <!-- Tools Dropdown (Simulated via hover/relative or just direct links) -->
+                        <div class="relative group/menu">
+                            <button
+                                class="flex items-center text-sm font-medium text-slate-600 hover:text-brand-500 transition-colors"
+                            >
+                                Specialty Tools
+                                <svg
+                                    class="ml-1 h-4 w-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div
+                                class="absolute right-0 mt-2 w-56 origin-top-right rounded-xl bg-white p-2 shadow-xl ring-1 ring-black/5 focus:outline-none transition-all duration-200 opacity-0 invisible translate-y-1 group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0"
+                            >
+                                <div class="py-1">
+                                    <p
+                                        class="px-3 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                                    >
+                                        QR Codes
+                                    </p>
+                                    <a
+                                        href="/wifi-qr-code-generator/"
+                                        class="flex items-center px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-lg"
+                                        >WiFi QR Generator</a
+                                    >
+                                    <a
+                                        href="/url-qr-code-generator/"
+                                        class="flex items-center px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-lg"
+                                        >URL QR Generator</a
+                                    >
+                                    <a
+                                        href="/vcard-qr-code-generator/"
+                                        class="flex items-center px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-lg"
+                                        >vCard QR Generator</a
+                                    >
+                                    <div class="my-1 border-t border-slate-100">
+                                    </div>
+                                    <p
+                                        class="px-3 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider"
+                                    >
+                                        Barcodes
+                                    </p>
+                                    <a
+                                        href="/code-128-barcode-generator/"
+                                        class="flex items-center px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-lg"
+                                        >Code 128 Generator</a
+                                    >
+                                    <a
+                                        href="/ean-13-barcode-generator/"
+                                        class="flex items-center px-3 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-brand-600 rounded-lg"
+                                        >EAN-13 Generator</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <a
+                            href="/blog/"
+                            class={`text-sm font-medium transition-colors hover:text-brand-500 ${pathname.startsWith("/blog") ? "text-brand-500" : "text-slate-600"}`}
+                            >Blog</a
+                        >
+                        <a
+                            href="/about/"
+                            class={`text-sm font-medium transition-colors hover:text-brand-500 ${pathname.startsWith("/about") ? "text-brand-500" : "text-slate-600"}`}
+                            >About</a
+                        >
+                    </nav>
+
+                    <!-- Mobile menu button -->
+                    <div class="flex md:hidden">
+                        <button
+                            id="mobile-menu-button"
+                            type="button"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+                            aria-controls="mobile-menu"
+                            aria-expanded="false"
+                        >
+                            <span class="sr-only">Open main menu</span>
+                            <svg
+                                class="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                id="mobile-menu-icon"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div
+                class="hidden md:hidden border-b border-slate-200 bg-white"
+                id="mobile-menu"
+            >
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a
+                        href="/qr-code-generator/"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600"
+                        >QR Generator</a
+                    >
+                    <a
+                        href="/barcode-generator/"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600"
+                        >Barcode Generator</a
+                    >
+
+                    <div
+                        class="px-3 py-2 font-semibold text-xs text-slate-400 uppercase tracking-wider"
+                    >
+                        QR Specialty
+                    </div>
+                    <a
+                        href="/wifi-qr-code-generator/"
+                        class="block pl-6 pr-3 py-1.5 rounded-md text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600"
+                        >WiFi QR Generator</a
+                    >
+                    <a
+                        href="/url-qr-code-generator/"
+                        class="block pl-6 pr-3 py-1.5 rounded-md text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600"
+                        >URL QR Generator</a
+                    >
+                    <a
+                        href="/vcard-qr-code-generator/"
+                        class="block pl-6 pr-3 py-1.5 rounded-md text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600"
+                        >vCard QR Generator</a
+                    >
+
+                    <div
+                        class="px-3 py-2 font-semibold text-xs text-slate-400 uppercase tracking-wider"
+                    >
+                        Barcode Specialty
+                    </div>
+                    <a
+                        href="/code-128-barcode-generator/"
+                        class="block pl-6 pr-3 py-1.5 rounded-md text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600"
+                        >Code 128 Generator</a
+                    >
+                    <a
+                        href="/ean-13-barcode-generator/"
+                        class="block pl-6 pr-3 py-1.5 rounded-md text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-600"
+                        >EAN-13 Generator</a
+                    >
+
+                    <div class="border-t border-slate-100 my-2"></div>
+                    <a
+                        href="/blog/"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600"
+                        >Blog</a
+                    >
+                    <a
+                        href="/about/"
+                        class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-brand-600"
+                        >About</a
+                    >
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            <slot />
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-400 border-t border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Column 1: Info -->
+                    <div class="md:col-span-2 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <svg
+                                class="h-6 w-6 text-brand-400"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <rect x="3" y="3" width="18" height="18" rx="2"
+                                ></rect>
+                                <path d="M7 7h4v4H7z"></path>
+                                <path d="M13 7h4v4h-4z"></path>
+                                <path d="M7 13h4v4H7z"></path>
+                                <path d="M17 17h.01"></path>
+                                <path d="M13 13h1"></path>
+                                <path d="M13 17h1"></path>
+                                <path d="M17 13h1"></path>
+                            </svg>
+                            <span class="font-bold text-lg text-white"
+                                >QR Barcode Tools</span
+                            >
+                        </div>
+                        <p class="text-sm text-slate-400 max-w-sm">
+                            Free browser-based QR code and barcode generator
+                            tools. Create static QR codes and barcodes locally
+                            and securely in your browser. No signup, no
+                            tracking.
+                        </p>
+                        <p class="text-xs text-slate-500">
+                            Your data never leaves your device. All generation
+                            happens locally using client-side JavaScript.
+                        </p>
+                    </div>
+
+                    <!-- Column 2: Quick Links -->
+                    <div>
+                        <h3
+                            class="text-sm font-semibold text-white uppercase tracking-wider mb-4"
+                        >
+                            QR Tools
+                        </h3>
+                        <ul class="space-y-2 text-sm">
+                            <li>
+                                <a
+                                    href="/qr-code-generator/"
+                                    class="hover:text-white transition-colors"
+                                    >General QR Generator</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/wifi-qr-code-generator/"
+                                    class="hover:text-white transition-colors"
+                                    >WiFi QR Generator</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/url-qr-code-generator/"
+                                    class="hover:text-white transition-colors"
+                                    >URL QR Generator</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/vcard-qr-code-generator/"
+                                    class="hover:text-white transition-colors"
+                                    >vCard QR Generator</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Barcode Tools & Policy -->
+                    <div>
+                        <h3
+                            class="text-sm font-semibold text-white uppercase tracking-wider mb-4"
+                        >
+                            Barcode & Info
+                        </h3>
+                        <ul class="space-y-2 text-sm">
+                            <li>
+                                <a
+                                    href="/barcode-generator/"
+                                    class="hover:text-white transition-colors"
+                                    >General Barcode</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/code-128-barcode-generator/"
+                                    class="hover:text-white transition-colors"
+                                    >Code 128 Generator</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/ean-13-barcode-generator/"
+                                    class="hover:text-white transition-colors"
+                                    >EAN-13 Generator</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/blog/"
+                                    class="hover:text-white transition-colors"
+                                    >Guides & Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-8 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500"
+                >
+                    <p>
+                        &copy; {new Date().getFullYear()} QR Barcode Tools. Built
+                        with Astro. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 mt-4 sm:mt-0">
+                        <a
+                            href="/about/"
+                            class="hover:text-white transition-colors">About</a
+                        >
+                        <a
+                            href="/contact/"
+                            class="hover:text-white transition-colors"
+                            >Contact</a
+                        >
+                        <a
+                            href="/privacy-policy/"
+                            class="hover:text-white transition-colors"
+                            >Privacy Policy</a
+                        >
+                        <a
+                            href="/terms/"
+                            class="hover:text-white transition-colors"
+                            >Terms of Service</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Mobile Menu Script -->
+        <script>
+            const mobileMenuButton =
+                document.getElementById("mobile-menu-button");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileMenuIcon = document.getElementById("mobile-menu-icon");
+
+            if (mobileMenuButton && mobileMenu && mobileMenuIcon) {
+                mobileMenuButton.addEventListener("click", () => {
+                    const isExpanded =
+                        mobileMenuButton.getAttribute("aria-expanded") ===
+                        "true";
+                    mobileMenuButton.setAttribute(
+                        "aria-expanded",
+                        !isExpanded ? "true" : "false",
+                    );
+                    mobileMenu.classList.toggle("hidden");
+
+                    if (!isExpanded) {
+                        // Close icon
+                        mobileMenuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />`;
+                    } else {
+                        // Menu icon
+                        mobileMenuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

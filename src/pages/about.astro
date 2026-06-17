@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "About Us - Learn Our Philosophy | QR Barcode Tools";
+const description =
+    "Learn more about QR Barcode Tools. We deliver fast, local, and 100% private QR code and barcode generator tools right inside your browser.";
+---
+
+<BaseLayout title={title} description={description}>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10">
+        <!-- Header -->
+        <div class="text-center">
+            <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight">
+                About <span class="text-gradient">QR Barcode Tools</span>
+            </h1>
+            <p class="text-slate-500 mt-2 text-lg max-w-xl mx-auto">
+                Our philosophy: Free, simple, fast, and 100% private tools for
+                everyone.
+            </p>
+        </div>
+
+        <!-- Content Card -->
+        <div
+            class="bg-white rounded-2xl border border-slate-200/80 p-8 md:p-10 shadow-sm space-y-6 text-slate-600 leading-relaxed text-sm md:text-base"
+        >
+            <p>
+                Welcome to <strong>QR Barcode Tools</strong>, a premier global
+                portal providing high-resolution static QR code and barcode
+                generators. We built this platform because we believe that
+                creating standard office, warehouse, and marketing graphics
+                should be fast, elegant, and completely private.
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                Our Commitment to Privacy First
+            </h2>
+            <p>
+                The majority of QR and barcode utilities online force users to
+                submit their data to backend servers. This means your private
+                passwords, company inventory keys, URLs, and personal contact
+                lists are recorded and stored in commercial databases.
+            </p>
+            <p>
+                At <strong>QR Barcode Tools</strong>, we do things differently.
+                Our tools operate <strong
+                    >entirely inside your web browser</strong
+                >:
+            </p>
+            <ul
+                class="list-disc list-inside pl-4 space-y-1.5 font-medium text-slate-800"
+            >
+                <li>🔒 No account creation or registration is required.</li>
+                <li>🔒 No inputs or databases are stored on our servers.</li>
+                <li>
+                    🔒 Barcode calculations and image renderings are handled by
+                    client-side JavaScript.
+                </li>
+                <li>
+                    🔒 High-resolution downloads (PNG and SVG vectors) are
+                    triggered locally.
+                </li>
+            </ul>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                Why is our service free?
+            </h2>
+            <p>
+                By eliminating complex server architectures, databases, and user
+                account profiles, our hosting requirements are incredibly small.
+                We can run this platform as a static Astro deployment, allowing
+                us to keep it 100% free with unlimited generation and no
+                watermarks, indefinitely.
+            </p>
+
+            <div
+                class="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between"
+            >
+                <span class="text-sm font-semibold text-slate-500 mb-4 sm:mb-0"
+                    >Need a secure, reliable QR code or barcode now?</span
+                >
+                <a
+                    href="/"
+                    class="brand-gradient hover:brand-gradient-hover text-white font-bold px-6 py-3 rounded-xl shadow-md transition-colors text-sm"
+                >
+                    Browse Our Generators
+                </a>
+            </div>
+        </div>
+    </div>
+</BaseLayout>

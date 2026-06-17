@@ -1,0 +1,585 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Free QR Code and Barcode Generator Tools - QR Barcode Tools";
+const description =
+    "Free browser-based QR code and barcode generator tools. Create static QR codes and barcodes locally in your browser. No sign-up, no tracking, 100% secure.";
+
+// 常见问题解答 FAQ
+const faqs = [
+    {
+        q: "Is it safe to generate QR codes and barcodes here?",
+        a: "Absolutely. Unlike other online tools that send your input data to a backend server, our generator runs entirely in your browser. All processing, rendering, and file generation are done locally on your device via client-side JavaScript. Your data never touches our server.",
+    },
+    {
+        q: "What is the difference between static and dynamic QR codes?",
+        a: "A static QR code encodes the data directly into the code itself. Once generated, it cannot be changed, and it does not track any scan statistics. A dynamic QR code contains a redirection link that can point to different URLs over time and tracks scans. Our tools generate 100% free static QR codes that last forever and have no scan limits.",
+    },
+    {
+        q: "Do the QR codes and barcodes generated here expire?",
+        a: "No. Since they are static codes containing your exact raw data, they will never expire and can be scanned an unlimited number of times.",
+    },
+    {
+        q: "Do I need to pay or create an account?",
+        a: "No account or payment is required. All tools are completely free, without watermark, and with unlimited high-resolution downloads (PNG and SVG).",
+    },
+];
+
+// 热门指南
+const popularGuides = [
+    {
+        title: "How to Create a QR Code for a Website Link",
+        desc: "A complete step-by-step guide to generating free, static website QR codes that never expire.",
+        slug: "how-to-create-a-qr-code-for-a-website-link",
+    },
+    {
+        title: "Static vs. Dynamic QR Codes: Which Should You Choose?",
+        desc: "Understand the key differences between static and dynamic QR codes, including tracking, lifespan, and editing capabilities.",
+        slug: "static-vs-dynamic-qr-codes",
+    },
+    {
+        title: "How to Generate a Barcode Online",
+        desc: "Learn about different barcode types, such as Code 128 and EAN-13, and how to create them for products or assets.",
+        slug: "how-to-generate-a-barcode-online",
+    },
+];
+---
+
+<BaseLayout title={title} description={description}>
+    <!-- Hero Section -->
+    <section
+        class="relative bg-gradient-to-b from-brand-50 to-white pt-20 pb-16 overflow-hidden"
+    >
+        <!-- Decorative Grid Background -->
+        <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,#0f172a08_1px,transparent_1px),linear-gradient(to_bottom,#0f172a08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"
+        >
+        </div>
+
+        <div
+            class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
+        >
+            <div
+                class="inline-flex items-center space-x-2 bg-brand-100/80 px-3 py-1.5 rounded-full text-brand-700 text-xs font-semibold tracking-wider uppercase mb-6"
+            >
+                <span>⚡ 100% Client-Side & Private</span>
+            </div>
+
+            <h1
+                class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-none mb-6"
+            >
+                Free <span class="text-gradient">QR Code</span> & <span
+                    class="text-brand-600">Barcode</span
+                > Generator Tools
+            </h1>
+
+            <p
+                class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed"
+            >
+                Create professional static QR codes and barcodes right in your
+                browser. No sign-up, no tracking, and no limits.
+            </p>
+
+            <!-- Primary Tools Callout Grid -->
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16"
+            >
+                <!-- QR Generator Card -->
+                <div
+                    class="bg-white rounded-2xl border border-slate-200/80 shadow-lg p-8 hover:shadow-xl transition-all duration-300 flex flex-col items-start text-left group"
+                >
+                    <div
+                        class="bg-brand-100 text-brand-600 p-4 rounded-xl mb-6 group-hover:scale-110 transition-transform"
+                    >
+                        <svg
+                            class="h-8 w-8"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <rect x="3" y="3" width="18" height="18" rx="2"
+                            ></rect>
+                            <rect x="7" y="7" width="3" height="3"></rect>
+                            <rect x="14" y="7" width="3" height="3"></rect>
+                            <rect x="7" y="14" width="3" height="3"></rect>
+                            <path
+                                d="M14 14h1v1h-1zM17 14h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-3">
+                        QR Code Generator
+                    </h2>
+                    <p class="text-slate-600 mb-6 flex-grow">
+                        Generate high-resolution static QR codes for custom
+                        text, links, emails, and more. Complete with color and
+                        error-correction customizations.
+                    </p>
+                    <a
+                        href="/qr-code-generator/"
+                        class="brand-gradient hover:brand-gradient-hover text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors w-full text-center"
+                    >
+                        Go to QR Generator &rarr;
+                    </a>
+                </div>
+
+                <!-- Barcode Generator Card -->
+                <div
+                    class="bg-white rounded-2xl border border-slate-200/80 shadow-lg p-8 hover:shadow-xl transition-all duration-300 flex flex-col items-start text-left group"
+                >
+                    <div
+                        class="bg-slate-100 text-slate-700 p-4 rounded-xl mb-6 group-hover:scale-110 transition-transform"
+                    >
+                        <svg
+                            class="h-8 w-8"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3 5v14M7 5v14M11 5v14M14 5v14M17 5v14M21 5v14"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-3">
+                        Barcode Generator
+                    </h2>
+                    <p class="text-slate-600 mb-6 flex-grow">
+                        Create standard inventory barcodes including Code 128,
+                        EAN-13, and UPC-A. Adjust sizing, labels, and download
+                        for free.
+                    </p>
+                    <a
+                        href="/barcode-generator/"
+                        class="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors w-full text-center"
+                    >
+                        Go to Barcode Generator &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secondary/Specialty Tools Section -->
+    <section class="py-16 bg-slate-50 border-y border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">
+                    Specialty & Specific Formats
+                </h2>
+                <p class="text-slate-500 mt-2">
+                    Get quick access to pre-configured formats tailored to
+                    specific tasks.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- WiFi QR Code -->
+                <a
+                    href="/wifi-qr-code-generator/"
+                    class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all group"
+                >
+                    <div
+                        class="text-brand-500 mb-4 group-hover:scale-110 transition-transform inline-block"
+                    >
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01M5.283 13.576a9 9 0 0113.434 0M2.454 10.747a13 13 0 0119.091 0"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3
+                        class="font-bold text-slate-900 group-hover:text-brand-600 transition-colors"
+                    >
+                        WiFi QR Code
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Generate QR codes to share your home or office WiFi
+                        password seamlessly.
+                    </p>
+                </a>
+
+                <!-- URL QR Code -->
+                <a
+                    href="/url-qr-code-generator/"
+                    class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all group"
+                >
+                    <div
+                        class="text-brand-500 mb-4 group-hover:scale-110 transition-transform inline-block"
+                    >
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3
+                        class="font-bold text-slate-900 group-hover:text-brand-600 transition-colors"
+                    >
+                        URL QR Code
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Create static QR codes specifically for website URLs
+                        with link prefix help.
+                    </p>
+                </a>
+
+                <!-- vCard QR Code -->
+                <a
+                    href="/vcard-qr-code-generator/"
+                    class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all group"
+                >
+                    <div
+                        class="text-brand-500 mb-4 group-hover:scale-110 transition-transform inline-block"
+                    >
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3
+                        class="font-bold text-slate-900 group-hover:text-brand-600 transition-colors"
+                    >
+                        vCard QR Code
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Convert digital contact info (vCard 3.0/4.0) into a
+                        simple business scan.
+                    </p>
+                </a>
+
+                <!-- Code 128 Barcode -->
+                <a
+                    href="/code-128-barcode-generator/"
+                    class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all group"
+                >
+                    <div
+                        class="text-brand-500 mb-4 group-hover:scale-110 transition-transform inline-block"
+                    >
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M7 7h.01M17 7h.01M3 21h18M3 10h18M3 14h18M3 17h18"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3
+                        class="font-bold text-slate-900 group-hover:text-brand-600 transition-colors"
+                    >
+                        Code 128
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Create general-purpose Code 128 barcodes for warehouse
+                        labels and assets.
+                    </p>
+                </a>
+
+                <!-- EAN-13 Barcode -->
+                <a
+                    href="/ean-13-barcode-generator/"
+                    class="bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-300 hover:shadow-md transition-all group"
+                >
+                    <div
+                        class="text-brand-500 mb-4 group-hover:scale-110 transition-transform inline-block"
+                    >
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3
+                        class="font-bold text-slate-900 group-hover:text-brand-600 transition-colors"
+                    >
+                        EAN-13
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-1">
+                        Generate standard global retail barcode images with
+                        automatic checksum helper.
+                    </p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features / Why use this tool Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">
+                    Why Generate Codes With Us?
+                </h2>
+                <p class="text-slate-500 mt-2">
+                    Professional standard generators built with privacy and
+                    simplicity at their core.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="text-center md:text-left space-y-2">
+                    <div
+                        class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-blue-100 text-blue-600 mb-2"
+                    >
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900">
+                        100% Secure & Private
+                    </h3>
+                    <p class="text-sm text-slate-600">
+                        No servers involved. Everything is calculated and
+                        rendered directly in your web browser. Perfect for
+                        internal tags or sensitive information.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="text-center md:text-left space-y-2">
+                    <div
+                        class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-indigo-100 text-indigo-600 mb-2"
+                    >
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900">Instant Generation</h3>
+                    <p class="text-sm text-slate-600">
+                        Codes update in real-time as you type. Immediate
+                        feedback and verification of values as per official code
+                        standard specifications.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="text-center md:text-left space-y-2">
+                    <div
+                        class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-violet-100 text-violet-600 mb-2"
+                    >
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900">PNG & SVG Support</h3>
+                    <p class="text-sm text-slate-600">
+                        Download high-quality PNGs or resolution-independent
+                        vector SVGs. Ideal for print templates, digital
+                        marketing, or physical labels.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="text-center md:text-left space-y-2">
+                    <div
+                        class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-teal-100 text-teal-600 mb-2"
+                    >
+                        <svg
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900">
+                        No Watermarks or Limits
+                    </h3>
+                    <p class="text-sm text-slate-600">
+                        Generate unlimited barcodes and static QR codes forever.
+                        No restrictions, expired codes, or unexpected billing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Note banner -->
+    <section class="py-8 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div
+                class="inline-flex items-center space-x-2 text-brand-300 font-bold mb-2"
+            >
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                        fill-rule="evenodd"
+                        d="M2.166 4.9c.773-.424 1.706-.5 2.54-.212l5.059 1.743c.154.053.322.053.476 0l5.059-1.743a3.003 3.003 0 013.737 3.327c-.244 2.458-1.127 5.064-5.32 8.04a.498.498 0 01-.58 0c-4.193-2.976-5.076-5.582-5.32-8.04a3.003 3.003 0 011.33-3.115zM10 8a1 1 0 100-2 1 1 0 000 2zm1 2a1 1 0 10-2 0v3a1 1 0 102 0v-3z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span>PRIVACY FIRST GUARANTEE</span>
+            </div>
+            <h3 class="text-lg font-semibold">
+                Your inputs never touch our servers
+            </h3>
+            <p class="text-sm text-slate-400 mt-1 max-w-2xl mx-auto">
+                Your security is our priority. We utilize browser APIs and local
+                rendering libraries (like JavaScript <code>qrcode</code> and <code
+                    >jsbarcode</code
+                >) to render everything client-side. We do not use any
+                databases, server actions, or tracking algorithms to capture
+                your inputs.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-slate-500 mt-2">
+                    Have a question about our QR and Barcode generators?
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                {
+                    faqs.map((faq) => (
+                        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                            <h3 class="text-lg font-bold text-slate-900 flex items-start">
+                                <span class="text-brand-500 mr-2">Q:</span>
+                                <span>{faq.q}</span>
+                            </h3>
+                            <p class="text-slate-600 mt-2 pl-6 text-sm leading-relaxed">
+                                {faq.a}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Guides Section -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">
+                    Popular Guides & Articles
+                </h2>
+                <p class="text-slate-500 mt-2">
+                    Learn more about the technology behind barcodes and QR
+                    codes.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {
+                    popularGuides.map((guide) => (
+                        <article class="bg-slate-50 rounded-xl border border-slate-200/60 p-6 flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg mb-2 line-clamp-2">
+                                    <a
+                                        href={`/blog/${guide.slug}/`}
+                                        class="hover:text-brand-600 transition-colors"
+                                    >
+                                        {guide.title}
+                                    </a>
+                                </h3>
+                                <p class="text-sm text-slate-600 mb-4 line-clamp-3">
+                                    {guide.desc}
+                                </p>
+                            </div>
+                            <a
+                                href={`/blog/${guide.slug}/`}
+                                class="text-sm font-semibold text-brand-600 hover:text-brand-700 inline-flex items-center"
+                            >
+                                Read guide &rarr;
+                            </a>
+                        </article>
+                    ))
+                }
+            </div>
+
+            <div class="text-center mt-10">
+                <a
+                    href="/blog/"
+                    class="inline-flex items-center px-6 py-3 rounded-xl border border-slate-300 hover:border-slate-400 text-slate-700 font-semibold bg-white transition-colors"
+                >
+                    View all articles
+                </a>
+            </div>
+        </div>
+    </section>
+</BaseLayout>

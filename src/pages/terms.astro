@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Terms of Service - Usage Guidelines | QR Barcode Tools";
+const description =
+    "Read our terms of service. Our QR code and barcode generator tools are provided on an as-is basis for personal and commercial usage.";
+---
+
+<BaseLayout title={title} description={description}>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div
+            class="bg-white rounded-2xl border border-slate-200/80 p-8 md:p-10 shadow-sm space-y-6 text-slate-600 leading-relaxed text-sm md:text-base"
+        >
+            <h1
+                class="text-3xl font-extrabold text-slate-900 border-b border-slate-100 pb-4"
+            >
+                Terms of Service
+            </h1>
+            <p class="text-xs text-slate-400">Last updated: June 17, 2026</p>
+
+            <p>
+                By accessing and using <strong>QR Barcode Tools</strong>, you
+                agree to comply with and be bound by the following terms and
+                conditions. If you do not agree with any of these terms, please
+                discontinue use of our tools.
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                1. Permitted Usage & License
+            </h2>
+            <p>
+                Our tools are provided entirely free of charge for both
+                **personal and commercial purposes**. You may:
+            </p>
+            <ul class="list-disc list-inside pl-4 space-y-1">
+                <li>Generate and download unlimited QR codes and barcodes.</li>
+                <li>
+                    Print downloaded barcode/QR graphics on retail packaging,
+                    business signs, assets, or commercial materials.
+                </li>
+                <li>
+                    Use our generated assets without paying royalties,
+                    attribution fees, or watermarks.
+                </li>
+            </ul>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                2. "As-Is" Disclaimer (Liability Limit)
+            </h2>
+            <p>
+                Our tools and services are provided on an <strong
+                    >"As-Is"</strong
+                > and <strong>"As-Available"</strong> basis. While we verify our generation
+                libraries against standard GS1 and ISO/IEC barcode protocols, we do
+                not guarantee:
+            </p>
+            <ul class="list-disc list-inside pl-4 space-y-1">
+                <li>
+                    That the generated codes will scan successfully on all
+                    legacy scanning devices.
+                </li>
+                <li>
+                    That your custom colors will offer high enough contrast for
+                    retail scanning.
+                </li>
+                <li>That our service will be uninterrupted or error-free.</li>
+            </ul>
+            <p>
+                We are not liable for any physical or digital financial damages
+                (including inventory reprint costs, packaging waste, shipment
+                quarantine, or logistics delays) resulting from the use or scan
+                failure of our tools.
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                3. Retail Number Registration Warning
+            </h2>
+            <p>
+                You are solely responsible for ensuring that any EAN-13 or UPC-A
+                numbers you input into our generators are legally leased and
+                registered to your company via **GS1**. Using unauthorized,
+                guessed, or stolen barcode numbers on retail products violates
+                international logistics guidelines and may result in retail
+                distribution bans and legal penalties.
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                4. Modifications to Terms
+            </h2>
+            <p>
+                We reserve the right to modify these terms of service at any
+                time without prior announcement. It is your responsibility to
+                review this page periodically to remain compliant with our
+                current guidelines.
+            </p>
+        </div>
+    </div>
+</BaseLayout>

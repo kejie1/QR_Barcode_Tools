@@ -1,0 +1,696 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Barcode Generator - Create Free Barcodes Online";
+const description =
+    "Generate Code 128, EAN-13, and UPC-A barcodes online in your browser. Download barcode images for labels, testing, and internal use.";
+---
+
+<BaseLayout title={title} description={description}>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- Breadcrumb -->
+        <nav class="flex text-xs text-slate-500 mb-6" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="/" class="hover:text-brand-600">Home</a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg
+                            class="w-3 h-3 text-slate-400 mx-1"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            ><path
+                                fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd"></path></svg
+                        >
+                        <span class="text-slate-400" aria-current="page"
+                            >Barcode Generator</span
+                        >
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Header -->
+        <div class="text-center md:text-left mb-10">
+            <h1
+                class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight"
+            >
+                Free Online <span class="text-gradient">Barcode Generator</span>
+            </h1>
+            <p class="text-slate-600 mt-2 max-w-2xl">
+                Generate premium-quality barcode graphics instantly in your
+                browser. Choose formats, customize dimensions, show or hide
+                text, and download vectors or high-res raster images.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Left Column: Settings Form -->
+            <div
+                class="lg:col-span-7 bg-white rounded-2xl border border-slate-200/80 shadow-md p-6 md:p-8 space-y-6"
+            >
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label
+                            for="barcode-content"
+                            class="block text-sm font-bold text-slate-700"
+                            >Barcode Value / Data</label
+                        >
+                        <button
+                            id="btn-example"
+                            class="text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors bg-brand-50 px-2 py-1 rounded"
+                        >
+                            Load Example
+                        </button>
+                    </div>
+                    <input
+                        type="text"
+                        id="barcode-content"
+                        class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-800 placeholder-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none transition-all text-sm font-mono"
+                        placeholder="Enter data to encode..."
+                    />
+                    <p
+                        id="error-message"
+                        class="text-xs text-red-500 mt-1.5 hidden font-semibold"
+                    >
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Format Selection -->
+                    <div>
+                        <label
+                            for="barcode-format"
+                            class="block text-sm font-bold text-slate-700 mb-2"
+                            >Barcode Symbology</label
+                        >
+                        <select
+                            id="barcode-format"
+                            class="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-700 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none bg-white text-sm"
+                        >
+                            <option value="CODE128" selected
+                                >Code 128 (General purpose)</option
+                            >
+                            <option value="EAN13"
+                                >EAN-13 (International Retail)</option
+                            >
+                            <option value="UPCA"
+                                >UPC-A (North American Retail)</option
+                            >
+                        </select>
+                    </div>
+
+                    <!-- Display Text -->
+                    <div>
+                        <label
+                            for="barcode-text"
+                            class="block text-sm font-bold text-slate-700 mb-2"
+                            >Human Readable Text</label
+                        >
+                        <select
+                            id="barcode-text"
+                            class="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-700 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none bg-white text-sm"
+                        >
+                            <option value="true" selected
+                                >Show Text Below Barcode</option
+                            >
+                            <option value="false">Hide Text</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Width scale -->
+                    <div>
+                        <label
+                            for="barcode-width"
+                            class="block text-sm font-bold text-slate-700 mb-2"
+                            >Bar Width Scale</label
+                        >
+                        <select
+                            id="barcode-width"
+                            class="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-700 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none bg-white text-sm"
+                        >
+                            <option value="1">1 (Thinnest)</option>
+                            <option value="2" selected>2 (Standard)</option>
+                            <option value="3">3 (Thick)</option>
+                            <option value="4">4 (Very Thick)</option>
+                        </select>
+                    </div>
+
+                    <!-- Height pixels -->
+                    <div>
+                        <label
+                            for="barcode-height"
+                            class="block text-sm font-bold text-slate-700 mb-2"
+                            >Barcode Height (px)</label
+                        >
+                        <input
+                            type="number"
+                            id="barcode-height"
+                            min="40"
+                            max="200"
+                            value="100"
+                            class="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-700 text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none"
+                        />
+                    </div>
+                </div>
+
+                <div class="flex space-x-3 pt-2">
+                    <button
+                        id="btn-generate"
+                        class="brand-gradient hover:brand-gradient-hover text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors flex-grow"
+                    >
+                        Generate Barcode
+                    </button>
+                    <button
+                        id="btn-reset"
+                        class="border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-600 px-4 py-3 rounded-xl transition-colors"
+                    >
+                        Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column: Live Preview Area -->
+            <div class="lg:col-span-5 space-y-6">
+                <div
+                    class="bg-white rounded-2xl border border-slate-200/80 shadow-md p-6 flex flex-col items-center justify-center text-center"
+                >
+                    <h2 class="text-lg font-bold text-slate-900 mb-4">
+                        Preview
+                    </h2>
+
+                    <div
+                        class="p-6 bg-slate-50 border border-slate-150 rounded-xl relative flex items-center justify-center min-h-[260px] w-full"
+                    >
+                        <div
+                            id="preview-placeholder"
+                            class="text-slate-400 text-sm flex flex-col items-center"
+                        >
+                            <svg
+                                class="h-12 w-12 text-slate-300 mb-2 animate-pulse"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M3 5v14M7 5v14M11 5v14M14 5v14M17 5v14M21 5v14"
+                                ></path>
+                            </svg>
+                            <span>Waiting for barcode data...</span>
+                        </div>
+
+                        <div
+                            id="barcode-container"
+                            class="hidden w-full flex items-center justify-center bg-white p-4 border rounded shadow-sm"
+                        >
+                            <!-- SVG preview -->
+                            <svg
+                                id="barcode-svg"
+                                class="max-w-full h-auto mx-auto"></svg>
+                            <!-- Hidden canvas for PNG conversion -->
+                            <canvas id="barcode-canvas" class="hidden"></canvas>
+                        </div>
+                    </div>
+
+                    <div
+                        id="action-buttons"
+                        class="w-full grid grid-cols-2 gap-3 mt-6 hidden"
+                    >
+                        <button
+                            id="btn-download-png"
+                            class="flex items-center justify-center space-x-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 px-4 rounded-xl shadow-sm transition-colors text-sm"
+                        >
+                            <svg
+                                class="h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                ></path>
+                            </svg>
+                            <span>Download PNG</span>
+                        </button>
+
+                        <button
+                            id="btn-download-svg"
+                            class="flex items-center justify-center space-x-2 border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-700 font-semibold py-2.5 px-4 rounded-xl transition-colors text-sm"
+                        >
+                            <svg
+                                class="h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                ></path>
+                            </svg>
+                            <span>Download SVG</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div
+                    class="bg-amber-50 border border-amber-100 rounded-2xl p-5 space-y-3"
+                >
+                    <h3
+                        class="text-sm font-bold text-amber-950 flex items-center"
+                    >
+                        <svg
+                            class="h-5 w-5 mr-1.5 text-amber-700"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        GS1 Disclaimer
+                    </h3>
+                    <p class="text-xs text-amber-900 leading-relaxed">
+                        This tool creates standard compliant barcode images.
+                        Official retail product codes used in commercial
+                        physical stores may require formal registration with <strong
+                            >GS1</strong
+                        > or another authorized registry issuer.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions / Content Section -->
+        <section
+            class="mt-16 bg-white rounded-2xl border border-slate-200/80 p-8 md:p-10 space-y-8"
+        >
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                    Supported Barcode Symbologies
+                </h2>
+                <p class="text-slate-600 leading-relaxed text-sm">
+                    A barcode is an optical, machine-readable representation of
+                    data relating to the object to which it is attached.
+                    Different symbologies serve different sectors, regulations,
+                    and systems.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">
+                        Code 128
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        A high-density barcode symbology capable of encoding all
+                        128 characters of ASCII. Widely used for shipping
+                        labels, inventory control, warehouse tracking, and asset
+                        management because of its dense structure and robust
+                        security.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">
+                        EAN-13
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        The European Article Number (now International Article
+                        Number) is a 13-digit retail barcode used globally. It
+                        has a specific 12-digit layout followed by a 13th
+                        modulo-10 checksum digit. Must consist only of numbers.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">
+                        UPC-A
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Universal Product Code is the standard retail barcode
+                        symbology used extensively in the United States and
+                        Canada. It encodes 12 digits consisting of numbers. It
+                        is mathematically a subset of EAN-13 (adding a leading 0
+                        translates UPC-A directly to EAN-13).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Specialty Links -->
+            <div class="pt-6 border-t border-slate-100">
+                <h3
+                    class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4"
+                >
+                    Looking for focused barcode tools?
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <a
+                        href="/code-128-barcode-generator/"
+                        class="flex items-center space-x-2 text-sm font-semibold text-brand-600 hover:text-brand-700 bg-brand-50/50 hover:bg-brand-50 p-3 rounded-xl transition-colors"
+                    >
+                        <span>🏷️ Code 128 Barcode Generator</span>
+                    </a>
+                    <a
+                        href="/ean-13-barcode-generator/"
+                        class="flex items-center space-x-2 text-sm font-semibold text-brand-600 hover:text-brand-700 bg-brand-50/50 hover:bg-brand-50 p-3 rounded-xl transition-colors"
+                    >
+                        <span>📦 EAN-13 Barcode Generator</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</BaseLayout>
+
+<script>
+    import JsBarcode from "jsbarcode";
+
+    const contentInput = document.getElementById(
+        "barcode-content",
+    ) as HTMLInputElement;
+    const formatSelect = document.getElementById(
+        "barcode-format",
+    ) as HTMLSelectElement;
+    const textSelect = document.getElementById(
+        "barcode-text",
+    ) as HTMLSelectElement;
+    const widthSelect = document.getElementById(
+        "barcode-width",
+    ) as HTMLSelectElement;
+    const heightInput = document.getElementById(
+        "barcode-height",
+    ) as HTMLInputElement;
+
+    const btnGenerate = document.getElementById(
+        "btn-generate",
+    ) as HTMLButtonElement;
+    const btnReset = document.getElementById("btn-reset") as HTMLButtonElement;
+    const btnExample = document.getElementById(
+        "btn-example",
+    ) as HTMLButtonElement;
+
+    const previewPlaceholder = document.getElementById(
+        "preview-placeholder",
+    ) as HTMLDivElement;
+    const barcodeContainer = document.getElementById(
+        "barcode-container",
+    ) as HTMLDivElement;
+    const actionButtons = document.getElementById(
+        "action-buttons",
+    ) as HTMLDivElement;
+    const btnDownloadPng = document.getElementById(
+        "btn-download-png",
+    ) as HTMLButtonElement;
+    const btnDownloadSvg = document.getElementById(
+        "btn-download-svg",
+    ) as HTMLButtonElement;
+    const errorMessage = document.getElementById(
+        "error-message",
+    ) as HTMLParagraphElement;
+
+    const svgElement = document.getElementById("barcode-svg") as any;
+    const canvasElement = document.getElementById(
+        "barcode-canvas",
+    ) as HTMLCanvasElement;
+
+    function calculateEan13Checksum(code12: string): number {
+        let sum = 0;
+        for (let i = 0; i < 12; i++) {
+            let digit = parseInt(code12.charAt(i), 10);
+            if (i % 2 === 1) {
+                sum += digit * 3;
+            } else {
+                sum += digit;
+            }
+        }
+        let remainder = sum % 10;
+        return remainder === 0 ? 0 : 10 - remainder;
+    }
+
+    function calculateUpcaChecksum(code11: string): number {
+        let sum = 0;
+        for (let i = 0; i < 11; i++) {
+            let digit = parseInt(code11.charAt(i), 10);
+            if (i % 2 === 0) {
+                // odd-positioned in 1-based (indices 0, 2, 4, 6, 8, 10)
+                sum += digit * 3;
+            } else {
+                // even-positioned in 1-based (indices 1, 3, 5, 7, 9)
+                sum += digit;
+            }
+        }
+        let remainder = sum % 10;
+        return remainder === 0 ? 0 : 10 - remainder;
+    }
+
+    function validateInput(
+        content: string,
+        format: string,
+    ): { valid: boolean; finalValue: string; msg?: string } {
+        if (!content) {
+            return {
+                valid: false,
+                finalValue: "",
+                msg: "Please enter data to encode.",
+            };
+        }
+
+        if (format === "EAN13") {
+            const clean = content.replace(/\s+/g, "");
+            if (!/^\d+$/.test(clean)) {
+                return {
+                    valid: false,
+                    finalValue: "",
+                    msg: "EAN-13 barcodes must contain digits only.",
+                };
+            }
+            if (clean.length === 12) {
+                const checksum = calculateEan13Checksum(clean);
+                return {
+                    valid: true,
+                    finalValue: clean + checksum,
+                    msg: `Notice: 12 digits entered. Added auto-checksum ${checksum}.`,
+                };
+            } else if (clean.length === 13) {
+                // validate existing checksum
+                const expectedChecksum = calculateEan13Checksum(
+                    clean.slice(0, 12),
+                );
+                const actualChecksum = parseInt(clean.charAt(12), 10);
+                if (expectedChecksum !== actualChecksum) {
+                    return {
+                        valid: true,
+                        finalValue: clean.slice(0, 12) + expectedChecksum,
+                        msg: `Warning: Incorrect checksum ${actualChecksum}. Auto-corrected to ${expectedChecksum}.`,
+                    };
+                }
+                return { valid: true, finalValue: clean };
+            } else {
+                return {
+                    valid: false,
+                    finalValue: "",
+                    msg: `EAN-13 must be exactly 12 or 13 digits (Current length: ${clean.length}).`,
+                };
+            }
+        }
+
+        if (format === "UPCA") {
+            const clean = content.replace(/\s+/g, "");
+            if (!/^\d+$/.test(clean)) {
+                return {
+                    valid: false,
+                    finalValue: "",
+                    msg: "UPC-A barcodes must contain digits only.",
+                };
+            }
+            if (clean.length === 11) {
+                const checksum = calculateUpcaChecksum(clean);
+                return {
+                    valid: true,
+                    finalValue: clean + checksum,
+                    msg: `Notice: 11 digits entered. Added auto-checksum ${checksum}.`,
+                };
+            } else if (clean.length === 12) {
+                const expectedChecksum = calculateUpcaChecksum(
+                    clean.slice(0, 11),
+                );
+                const actualChecksum = parseInt(clean.charAt(11), 10);
+                if (expectedChecksum !== actualChecksum) {
+                    return {
+                        valid: true,
+                        finalValue: clean.slice(0, 11) + expectedChecksum,
+                        msg: `Warning: Incorrect checksum ${actualChecksum}. Auto-corrected to ${expectedChecksum}.`,
+                    };
+                }
+                return { valid: true, finalValue: clean };
+            } else {
+                return {
+                    valid: false,
+                    finalValue: "",
+                    msg: `UPC-A must be exactly 11 or 12 digits (Current length: ${clean.length}).`,
+                };
+            }
+        }
+
+        // Code 128 validation: only ASCII is allowed
+        if (format === "CODE128") {
+            if (!/^[\x00-\x7F]*$/.test(content)) {
+                return {
+                    valid: false,
+                    finalValue: "",
+                    msg: "Code 128 accepts standard ASCII characters only.",
+                };
+            }
+        }
+
+        return { valid: true, finalValue: content };
+    }
+
+    function generateBarcode() {
+        const rawContent = contentInput.value.trim();
+        const format = formatSelect.value;
+        const { valid, finalValue, msg } = validateInput(rawContent, format);
+
+        if (!valid) {
+            errorMessage.textContent = msg || "Invalid data.";
+            errorMessage.classList.remove("hidden");
+            errorMessage.className =
+                "text-xs text-red-500 mt-1.5 font-semibold";
+            return;
+        }
+
+        if (msg) {
+            errorMessage.textContent = msg;
+            errorMessage.classList.remove("hidden");
+            errorMessage.className =
+                "text-xs text-blue-600 mt-1.5 font-semibold bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-100";
+        } else {
+            errorMessage.classList.add("hidden");
+        }
+
+        const displayValue = textSelect.value === "true";
+        const width = parseInt(widthSelect.value, 10);
+        const height = parseInt(heightInput.value, 10);
+
+        try {
+            // 1. Render SVG
+            JsBarcode(svgElement, finalValue, {
+                format: format,
+                width: width,
+                height: height,
+                displayValue: displayValue,
+                margin: 15,
+                background: "#ffffff",
+                lineColor: "#000000",
+            });
+
+            // 2. Render Canvas (for high-res PNG download)
+            JsBarcode(canvasElement, finalValue, {
+                format: format,
+                width: width * 2, // scale up for high-res
+                height: height * 2,
+                displayValue: displayValue,
+                margin: 30,
+                background: "#ffffff",
+                lineColor: "#000000",
+            });
+
+            // Show preview & buttons
+            previewPlaceholder.classList.add("hidden");
+            barcodeContainer.classList.remove("hidden");
+            actionButtons.classList.remove("hidden");
+        } catch (err: any) {
+            console.error(err);
+            errorMessage.textContent = `Barcode generation error. Please check your data format.`;
+            errorMessage.classList.remove("hidden");
+            errorMessage.className =
+                "text-xs text-red-500 mt-1.5 font-semibold";
+        }
+    }
+
+    btnGenerate.addEventListener("click", generateBarcode);
+
+    btnExample.addEventListener("click", () => {
+        const format = formatSelect.value;
+        if (format === "EAN13") {
+            contentInput.value = "400638133393"; // 12-digit EAN-13 example (checksum 1)
+        } else if (format === "UPCA") {
+            contentInput.value = "01234567890"; // 11-digit UPC-A example (checksum 5)
+        } else {
+            contentInput.value = "ST12345678"; // Code 128 example
+        }
+        generateBarcode();
+    });
+
+    formatSelect.addEventListener("change", () => {
+        const format = formatSelect.value;
+        if (format === "EAN13") {
+            contentInput.placeholder = "e.g. 400638133393 (12 or 13 digits)";
+        } else if (format === "UPCA") {
+            contentInput.placeholder = "e.g. 01234567890 (11 or 12 digits)";
+        } else {
+            contentInput.placeholder = "e.g. ST12345678";
+        }
+    });
+
+    btnReset.addEventListener("click", () => {
+        contentInput.value = "";
+        formatSelect.value = "CODE128";
+        textSelect.value = "true";
+        widthSelect.value = "2";
+        heightInput.value = "100";
+        errorMessage.classList.add("hidden");
+        contentInput.placeholder = "Enter data to encode...";
+
+        previewPlaceholder.classList.remove("hidden");
+        barcodeContainer.classList.add("hidden");
+        actionButtons.classList.add("hidden");
+    });
+
+    btnDownloadPng.addEventListener("click", () => {
+        const dataUrl = canvasElement.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = `barcode-${Date.now()}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+
+    btnDownloadSvg.addEventListener("click", () => {
+        const serializer = new XMLSerializer();
+        const svgStr = serializer.serializeToString(svgElement);
+        const blob = new Blob([svgStr], {
+            type: "image/svg+xml;charset=utf-8",
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `barcode-${Date.now()}.svg`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    });
+
+    // Enter to trigger
+    contentInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            generateBarcode();
+        }
+    });
+</script>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Contact Us - Support Desk | QR Barcode Tools";
+const description =
+    "Have questions, feature suggestions, or business inquiries? Get in touch with our static tools support desk.";
+---
+
+<BaseLayout title={title} description={description}>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10">
+        <!-- Header -->
+        <div class="text-center">
+            <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight">
+                Contact <span class="text-gradient">Our Support Desk</span>
+            </h1>
+            <p class="text-slate-500 mt-2 text-lg max-w-xl mx-auto">
+                Have questions or feedback? We would love to hear from you.
+            </p>
+        </div>
+
+        <!-- Content Card -->
+        <div
+            class="bg-white rounded-2xl border border-slate-200/80 p-8 md:p-10 shadow-sm space-y-6 text-slate-600 leading-relaxed text-center"
+        >
+            <div
+                class="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-brand-50 text-brand-600 mb-4"
+            >
+                <svg
+                    class="h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    ></path>
+                </svg>
+            </div>
+
+            <h2 class="text-2xl font-bold text-slate-900">Get in Touch</h2>
+            <p class="max-w-md mx-auto text-sm md:text-base">
+                Since we operate as a fully static local portal, we do not have
+                physical office hubs or active telephone lines.
+                <br />For feature requests, general support, or business
+                partnerships, please email us at:
+            </p>
+
+            <div class="py-4">
+                <a
+                    href="mailto:support@qrbarcodetools.com"
+                    class="inline-block text-xl md:text-2xl font-extrabold text-brand-600 hover:text-brand-700 tracking-wider hover:underline"
+                >
+                    support@qrbarcodetools.com
+                </a>
+            </div>
+
+            <p class="text-xs text-slate-400 max-w-sm mx-auto">
+                We typically review and respond to developer requests,
+                formatting bug reports, or partnership proposals within 2-3
+                business days.
+            </p>
+        </div>
+    </div>
+</BaseLayout>

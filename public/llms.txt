@@ -1,0 +1,17 @@
+# QR Barcode Tools
+
+QR Barcode Tools provides free browser-based tools for creating static QR codes and barcodes.
+
+Core pages:
+- /qr-code-generator/
+- /barcode-generator/
+- /wifi-qr-code-generator/
+- /url-qr-code-generator/
+- /vcard-qr-code-generator/
+- /code-128-barcode-generator/
+- /ean-13-barcode-generator/
+
+Notes:
+- Tools run in the browser.
+- No sign-up is required.
+- The site does not provide dynamic QR codes, short links, or scan tracking.

@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-slate-50 text-slate-900 font-sans antialiased selection:bg-brand-100 selection:text-brand-800;
+    }
+}
+
+/* 自定义卡片与渐变 */
+.brand-gradient {
+    background: linear-gradient(135deg, #0e8fe5 0%, #0270be 100%);
+}
+
+.brand-gradient-hover {
+    background: linear-gradient(135deg, #0270be 0%, #074c80 100%);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #0e8fe5 0%, #035a9a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

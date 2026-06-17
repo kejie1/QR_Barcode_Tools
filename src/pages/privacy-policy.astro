@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Privacy Policy - Your Data Security | QR Barcode Tools";
+const description =
+    "Read our comprehensive Privacy Policy. We guarantee 100% client-side rendering. Your QR and barcode inputs never touch our servers.";
+---
+
+<BaseLayout title={title} description={description}>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div
+            class="bg-white rounded-2xl border border-slate-200/80 p-8 md:p-10 shadow-sm space-y-6 text-slate-600 leading-relaxed text-sm md:text-base"
+        >
+            <h1
+                class="text-3xl font-extrabold text-slate-900 border-b border-slate-100 pb-4"
+            >
+                Privacy Policy
+            </h1>
+            <p class="text-xs text-slate-400">Last updated: June 17, 2026</p>
+
+            <p>
+                At <strong>QR Barcode Tools</strong>, accessible from our
+                domain, one of our main priorities is the privacy of our
+                visitors. This Privacy Policy document outlines our strict
+                policies regarding your input data and general analytics
+                collection.
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                1. Local Processing Guarantee (Zero Uploads)
+            </h2>
+            <p>
+                We do not employ any backend application servers, databases, or
+                cloud storage systems to record your tool inputs. When you
+                generate a QR code (including WiFi passwords, website links, or
+                contact vCards) or barcodes (including Code 128 or EAN-13), the
+                entire processing is executed <strong
+                    >locally inside your web browser</strong
+                >:
+            </p>
+            <ul class="list-disc list-inside pl-4 space-y-1">
+                <li>
+                    Your network keys or text values are never sent over the
+                    Internet.
+                </li>
+                <li>
+                    Your contact vCard details are translated into QR dots
+                    locally using open-source client-side code.
+                </li>
+                <li>
+                    Your downloaded files (PNG/SVG) are compiled on your device.
+                </li>
+            </ul>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                2. Traffic Analytics & Cookies
+            </h2>
+            <p>
+                To monitor overall website performance and optimize user
+                navigation, we may utilize standard lightweight analytical
+                scripts (such as Cloudflare Web Analytics or Google Analytics).
+                These scripts do not track personal identification info. They
+                only measure:
+            </p>
+            <ul class="list-disc list-inside pl-4 space-y-1">
+                <li>
+                    Browser type and general geographic region (country level).
+                </li>
+                <li>Pages viewed and total session length.</li>
+                <li>Standard referrer domains.</li>
+            </ul>
+            <p>
+                These analytics help us understand which tools are popular so we
+                can refine and improve our page loading speeds.
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                3. No Sale of Personal Data
+            </h2>
+            <p>
+                Since we do not collect, store, or sell any personal data,
+                emails, or passwords, we have nothing to sell to data brokers or
+                advertising campaigns. We are 100% compliant with general data
+                protection regulations (such as GDPR and CCPA) by default due to
+                our client-side architectural design.
+            </p>
+
+            <h2 class="text-xl font-bold text-slate-900 pt-4">
+                4. Third-Party Links
+            </h2>
+            <p>
+                Our website may contain articles with outbound links to
+                informative guides or external resources. We are not responsible
+                for the privacy practices of external domains. We encourage you
+                to read the privacy statements of any third-party websites you
+                visit.
+            </p>
+        </div>
+    </div>
+</BaseLayout>
