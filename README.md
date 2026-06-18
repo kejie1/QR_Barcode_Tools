@@ -9,7 +9,7 @@ Free browser-based QR code and barcode generators. Create high-resolution static
 ## Key Features & Tools
 
 ### 🌐 QR Code Utilities
-- **/qr-code-generator/**: Universal static QR code builder with support for custom sizes, correction levels, and hex colors.
+- **/qr-code-generator/**: Universal static QR code builder with a fast default flow and collapsed Advanced Options for sizes, correction levels, colors, logo upload, common platform icon presets, frame/shape/finder controls, and platform background PNG exports.
 - **/wifi-qr-code-generator/**: Share local network parameters securely without uploading your router password.
 - **/url-qr-code-generator/**: Fast, protocol-aware website redirect generator.
 - **/vcard-qr-code-generator/**: Convert standard contact details into a scannable digital business card (vCard 3.0).
