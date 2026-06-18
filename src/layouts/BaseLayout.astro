@@ -14,7 +14,7 @@ const currentUrl =
     canonicalUrl ||
     new URL(
         Astro.url.pathname,
-        Astro.site || "https://qrbarcodetools.com",
+        Astro.site || "https://qrbarcodekit.com",
     ).toString();
 
 // 获取当前路径来高亮导航
@@ -33,6 +33,17 @@ const pathname = Astro.url.pathname;
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={currentUrl} />
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q0WZ8GBXSV"></script>
+        <script is:inline>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-Q0WZ8GBXSV");
+        </script>
 
         <!-- Open Graph -->
         <meta property="og:type" content="website" />

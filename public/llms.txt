@@ -2,7 +2,7 @@
 
 QR Barcode Tools provides free browser-based tools for creating static QR codes and barcodes.
 
-Website: https://qrbarcodetools.com/
+Website: https://qrbarcodekit.com/
 GitHub: https://github.com/kejie1/QR_Barcode_Tools
 
 Core pages:

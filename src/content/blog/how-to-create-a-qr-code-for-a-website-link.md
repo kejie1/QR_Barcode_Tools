@@ -35,8 +35,8 @@ A **Static QR Code** encodes your website URL directly into the pixel structure.
 
 ## Live Practical Example
 
-If you encode `https://qrbarcodetools.com/about/` into our tool:
-- Your smartphone camera reads: `https://qrbarcodetools.com/about/`
+If you encode `https://qrbarcodekit.com/about/` into our tool:
+- Your smartphone camera reads: `https://qrbarcodekit.com/about/`
 - It translates the data matrix into a protocol request.
 - The web browser opens the About page.
 

@@ -2,7 +2,7 @@
 
 Free browser-based QR code and barcode generators. Create high-resolution static QR codes and industry-compliant barcodes securely and locally in your browser.
 
-**Website URL:** [https://qrbarcodetools.com](https://qrbarcodetools.com) (Placeholder)
+**Website URL:** [https://qrbarcodekit.com](https://qrbarcodekit.com)
 
 ---
 
