@@ -79,6 +79,27 @@ const description =
                     </p>
                 </div>
 
+                <details
+                    class="group border-t border-slate-100 pt-4"
+                >
+                    <summary
+                        class="flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 hover:border-brand-200 hover:bg-brand-50/50"
+                    >
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-700">
+                                Advanced Options
+                            </h3>
+                            <p class="text-xs text-slate-500">
+                                Size, colors, logo, design, and platform image options
+                            </p>
+                        </div>
+                        <span
+                            class="text-lg font-bold text-slate-400 transition-transform group-open:rotate-45"
+                            >+</span
+                        >
+                    </summary>
+
+                    <div class="space-y-6 pt-5">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Size -->
                     <div>
@@ -169,11 +190,331 @@ const description =
                     </div>
                 </div>
 
+                <!-- QR Design Controls -->
+                <div class="pt-4 border-t border-slate-100 space-y-5">
+                    <div class="space-y-3">
+                        <label
+                            class="block text-xs font-semibold text-slate-500 uppercase tracking-wider"
+                            >Frame Style</label
+                        >
+                        <div
+                            class="grid grid-cols-2 sm:grid-cols-4 gap-3"
+                            id="frame-options"
+                        >
+                            <button
+                                type="button"
+                                data-frame="none"
+                                class="design-option active border border-brand-300 bg-brand-50 text-slate-800 rounded-xl p-3 text-xs font-semibold"
+                                >No Frame</button
+                            >
+                            <button
+                                type="button"
+                                data-frame="caption-bottom"
+                                class="design-option border border-slate-200 hover:border-brand-300 rounded-xl p-3 text-xs font-semibold"
+                                >SCAN ME Bottom</button
+                            >
+                            <button
+                                type="button"
+                                data-frame="caption-top"
+                                class="design-option border border-slate-200 hover:border-brand-300 rounded-xl p-3 text-xs font-semibold"
+                                >SCAN ME Top</button
+                            >
+                            <button
+                                type="button"
+                                data-frame="card"
+                                class="design-option border border-slate-200 hover:border-brand-300 rounded-xl p-3 text-xs font-semibold"
+                                >Card Frame</button
+                            >
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label
+                                    for="frame-phrase"
+                                    class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5"
+                                    >Frame Phrase</label
+                                >
+                                <input
+                                    id="frame-phrase"
+                                    type="text"
+                                    value="SCAN ME"
+                                    maxlength="24"
+                                    class="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-700 text-sm focus:border-brand-500 focus:outline-none"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    for="frame-color"
+                                    class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5"
+                                    >Frame Color</label
+                                >
+                                <input
+                                    id="frame-color"
+                                    type="color"
+                                    value="#0f172a"
+                                    class="h-10 w-full p-1 border border-slate-300 rounded-lg cursor-pointer bg-white"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <label
+                                class="block text-xs font-semibold text-slate-500 uppercase tracking-wider"
+                                >Module Shape</label
+                            >
+                            <div
+                                class="grid grid-cols-4 gap-2"
+                                id="module-shape-options"
+                            >
+                                <button
+                                    type="button"
+                                    data-shape="square"
+                                    class="design-option active border border-brand-300 bg-brand-50 rounded-lg p-2 text-xs"
+                                    >Square</button
+                                >
+                                <button
+                                    type="button"
+                                    data-shape="rounded"
+                                    class="design-option border border-slate-200 hover:border-brand-300 rounded-lg p-2 text-xs"
+                                    >Round</button
+                                >
+                                <button
+                                    type="button"
+                                    data-shape="circle"
+                                    class="design-option border border-slate-200 hover:border-brand-300 rounded-lg p-2 text-xs"
+                                    >Dots</button
+                                >
+                                <button
+                                    type="button"
+                                    data-shape="diamond"
+                                    class="design-option border border-slate-200 hover:border-brand-300 rounded-lg p-2 text-xs"
+                                    >Diamond</button
+                                >
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <label
+                                class="block text-xs font-semibold text-slate-500 uppercase tracking-wider"
+                                >Finder Style</label
+                            >
+                            <div
+                                class="grid grid-cols-3 gap-2"
+                                id="finder-style-options"
+                            >
+                                <button
+                                    type="button"
+                                    data-finder="square"
+                                    class="design-option active border border-brand-300 bg-brand-50 rounded-lg p-2 text-xs"
+                                    >Square</button
+                                >
+                                <button
+                                    type="button"
+                                    data-finder="rounded"
+                                    class="design-option border border-slate-200 hover:border-brand-300 rounded-lg p-2 text-xs"
+                                    >Rounded</button
+                                >
+                                <button
+                                    type="button"
+                                    data-finder="circle"
+                                    class="design-option border border-slate-200 hover:border-brand-300 rounded-lg p-2 text-xs"
+                                    >Circle</button
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Logo Upload Section -->
                 <div class="pt-4 border-t border-slate-100 space-y-4">
                     <h3 class="text-sm font-bold text-slate-700">
                         Add Custom Logo (Optional)
                     </h3>
+                    <div class="space-y-3">
+                        <label
+                            class="block text-xs font-semibold text-slate-500 uppercase tracking-wider"
+                            >Choose Common Icon</label
+                        >
+                        <div
+                            id="preset-logo-options"
+                            class="grid grid-cols-5 sm:grid-cols-8 lg:grid-cols-10 gap-2"
+                        >
+                            <button
+                                type="button"
+                                data-logo="none"
+                                class="preset-logo active border border-brand-300 bg-brand-50 rounded-xl h-12 text-sm font-black"
+                                title="No logo"
+                                >X</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="chat"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-sm font-black"
+                                title="Chat"
+                                >Q</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="facebook"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-lg font-black"
+                                title="Facebook"
+                                >f</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="twitter"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Twitter / X legacy"
+                                >TW</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="youtube"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="YouTube"
+                                >YT</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="video"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Video"
+                                >PLAY</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="gplus"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Google Plus style"
+                                >G+</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="instagram"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Instagram"
+                                >IG</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="linkedin"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="LinkedIn"
+                                >in</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="x"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-lg font-black"
+                                title="X"
+                                >X</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="pinterest"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-lg font-black"
+                                title="Pinterest"
+                                >P</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="vimeo"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Vimeo"
+                                >V</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="soundcloud"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="SoundCloud"
+                                >SC</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="vk"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="VK"
+                                >VK</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="whatsapp"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="WhatsApp"
+                                >WA</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="app-store"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="App Store"
+                                >APP</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="play-store"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Google Play"
+                                >PLAY</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="gmail"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Gmail / Email"
+                                >MAIL</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="calendar"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Calendar"
+                                >CAL</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="document"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Document"
+                                >DOC</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="viber"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Viber"
+                                >VB</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="share"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="Share"
+                                >SH</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="wifi"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-xs font-black"
+                                title="WiFi"
+                                >WiFi</button
+                            >
+                            <button
+                                type="button"
+                                data-logo="bitcoin"
+                                class="preset-logo border border-slate-200 hover:border-brand-300 rounded-xl h-12 text-lg font-black"
+                                title="Bitcoin"
+                                >B</button
+                            >
+                        </div>
+                        <p class="text-xs text-slate-500">
+                            Preset icons are generic text marks for QR center
+                            styling. Upload your own official brand asset when
+                            you need an exact logo.
+                        </p>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- File upload -->
                         <div class="space-y-2">
@@ -263,6 +604,97 @@ const description =
                         logo in the center.
                     </p>
                 </div>
+
+                <!-- Platform Background Section -->
+                <div class="pt-4 border-t border-slate-100 space-y-4">
+                    <h3 class="text-sm font-bold text-slate-700">
+                        Platform Background Image (Optional)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label
+                                for="platform-preset"
+                                class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5"
+                                >Platform Size</label
+                            >
+                            <select
+                                id="platform-preset"
+                                class="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-700 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none bg-white"
+                            >
+                                <option value="none" selected
+                                    >Plain QR only</option
+                                >
+                                <option value="instagram-post"
+                                    >Instagram Post / Square - 1080 x 1080</option
+                                >
+                                <option value="story"
+                                    >Instagram Story / Reels / TikTok - 1080 x 1920</option
+                                >
+                                <option value="youtube-thumbnail"
+                                    >YouTube Thumbnail - 1280 x 720</option
+                                >
+                                <option value="social-landscape"
+                                    >LinkedIn / Facebook / X Post - 1200 x 630</option
+                                >
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                for="platform-theme"
+                                class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5"
+                                >Background Theme</label
+                            >
+                            <select
+                                id="platform-theme"
+                                class="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-700 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none bg-white"
+                            >
+                                <option value="blue" selected>Blue Clean</option>
+                                <option value="dark">Dark Contrast</option>
+                                <option value="mint">Mint Fresh</option>
+                                <option value="warm">Warm Neutral</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label
+                                for="platform-title"
+                                class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5"
+                                >Headline</label
+                            >
+                            <input
+                                id="platform-title"
+                                type="text"
+                                value="Scan to open"
+                                maxlength="60"
+                                class="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-700 text-sm focus:border-brand-500 focus:outline-none"
+                            />
+                        </div>
+
+                        <div>
+                            <label
+                                for="platform-caption"
+                                class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5"
+                                >Caption</label
+                            >
+                            <input
+                                id="platform-caption"
+                                type="text"
+                                value="Created with QR Barcode Tools"
+                                maxlength="80"
+                                class="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-700 text-sm focus:border-brand-500 focus:outline-none"
+                            />
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-slate-400 italic">
+                        Platform backgrounds are generated locally as PNG images.
+                        They are useful for social posts, stories, thumbnails,
+                        and simple promotional cards.
+                    </p>
+                </div>
+
+                    </div>
+                </details>
 
                 <div class="flex space-x-3 pt-2">
                     <button
@@ -364,9 +796,16 @@ const description =
                                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                                 ></path>
                             </svg>
-                            <span>Download SVG</span>
+                            <span>Download Basic SVG</span>
                         </button>
                     </div>
+                    <p
+                        id="advanced-style-note"
+                        class="hidden mt-2 text-[11px] text-slate-400"
+                    >
+                        Frame, shape, and logo styling are applied to PNG output.
+                        SVG download keeps a basic QR structure for compatibility.
+                    </p>
 
                     <button
                         id="btn-copy-url"
@@ -388,6 +827,50 @@ const description =
                         </svg>
                         <span id="copy-text">Copy Image Data URI</span>
                     </button>
+
+                    <div
+                        id="platform-preview-card"
+                        class="hidden w-full mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-4"
+                    >
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-sm font-bold text-slate-800">
+                                Platform Background Preview
+                            </h3>
+                            <span
+                                id="platform-size-label"
+                                class="text-[11px] font-semibold text-slate-500"
+                            ></span>
+                        </div>
+                        <div
+                            class="bg-white rounded-xl border border-slate-200 p-3"
+                        >
+                            <img
+                                id="platform-preview-image"
+                                src=""
+                                alt="Generated platform background"
+                                class="w-full h-auto rounded-lg shadow-sm"
+                            />
+                        </div>
+                        <button
+                            id="btn-download-platform"
+                            class="w-full mt-3 flex items-center justify-center space-x-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 px-4 rounded-xl shadow-sm transition-colors text-sm"
+                        >
+                            <svg
+                                class="h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                ></path>
+                            </svg>
+                            <span>Download Platform PNG</span>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Warning / Notes card -->
@@ -558,6 +1041,24 @@ const description =
     const logoBorderCheckbox = document.getElementById(
         "logo-border",
     ) as HTMLInputElement;
+    const framePhraseInput = document.getElementById(
+        "frame-phrase",
+    ) as HTMLInputElement;
+    const frameColorInput = document.getElementById(
+        "frame-color",
+    ) as HTMLInputElement;
+    const platformPresetSelect = document.getElementById(
+        "platform-preset",
+    ) as HTMLSelectElement;
+    const platformThemeSelect = document.getElementById(
+        "platform-theme",
+    ) as HTMLSelectElement;
+    const platformTitleInput = document.getElementById(
+        "platform-title",
+    ) as HTMLInputElement;
+    const platformCaptionInput = document.getElementById(
+        "platform-caption",
+    ) as HTMLInputElement;
 
     const btnGenerate = document.getElementById(
         "btn-generate",
@@ -577,6 +1078,9 @@ const description =
     const actionButtons = document.getElementById(
         "action-buttons",
     ) as HTMLDivElement;
+    const advancedStyleNote = document.getElementById(
+        "advanced-style-note",
+    ) as HTMLParagraphElement;
     const btnCopyUrl = document.getElementById(
         "btn-copy-url",
     ) as HTMLButtonElement;
@@ -586,13 +1090,170 @@ const description =
     const btnDownloadSvg = document.getElementById(
         "btn-download-svg",
     ) as HTMLButtonElement;
+    const platformPreviewCard = document.getElementById(
+        "platform-preview-card",
+    ) as HTMLDivElement;
+    const platformPreviewImage = document.getElementById(
+        "platform-preview-image",
+    ) as HTMLImageElement;
+    const platformSizeLabel = document.getElementById(
+        "platform-size-label",
+    ) as HTMLSpanElement;
+    const btnDownloadPlatform = document.getElementById(
+        "btn-download-platform",
+    ) as HTMLButtonElement;
     const errorMessage = document.getElementById(
         "error-message",
     ) as HTMLParagraphElement;
 
     let currentPngDataUrl = "";
     let currentSvgContent = "";
+    let currentPlatformDataUrl = "";
     let uploadedLogoDataUrl = "";
+    let activeFrameStyle = "none";
+    let activeModuleShape = "square";
+    let activeFinderStyle = "square";
+    let activePresetLogo = "none";
+
+    const platformPresets = {
+        "instagram-post": {
+            label: "Instagram Post / Square",
+            width: 1080,
+            height: 1080,
+        },
+        story: {
+            label: "Instagram Story / Reels / TikTok",
+            width: 1080,
+            height: 1920,
+        },
+        "youtube-thumbnail": {
+            label: "YouTube Thumbnail",
+            width: 1280,
+            height: 720,
+        },
+        "social-landscape": {
+            label: "LinkedIn / Facebook / X Post",
+            width: 1200,
+            height: 630,
+        },
+    } as const;
+
+    const platformThemes = {
+        blue: {
+            start: "#e0f2fe",
+            end: "#0ea5e9",
+            accent: "#0369a1",
+            title: "#0f172a",
+            text: "#334155",
+            card: "#ffffff",
+        },
+        dark: {
+            start: "#020617",
+            end: "#1e293b",
+            accent: "#38bdf8",
+            title: "#f8fafc",
+            text: "#cbd5e1",
+            card: "#ffffff",
+        },
+        mint: {
+            start: "#d1fae5",
+            end: "#14b8a6",
+            accent: "#047857",
+            title: "#052e2b",
+            text: "#134e4a",
+            card: "#ffffff",
+        },
+        warm: {
+            start: "#fff7ed",
+            end: "#f59e0b",
+            accent: "#b45309",
+            title: "#431407",
+            text: "#78350f",
+            card: "#ffffff",
+        },
+    } as const;
+
+    const presetLogoConfig = {
+        chat: { icon: "Q", bg: "#84cc16", fg: "#ffffff" },
+        facebook: { icon: "f", bg: "#1877f2", fg: "#ffffff" },
+        twitter: { icon: "TW", bg: "#38bdf8", fg: "#ffffff" },
+        youtube: { icon: "YT", bg: "#ef4444", fg: "#ffffff" },
+        video: { icon: "PLAY", bg: "#dc2626", fg: "#ffffff" },
+        gplus: { icon: "G+", bg: "#ef4444", fg: "#ffffff" },
+        instagram: { icon: "IG", bg: "#c13584", fg: "#ffffff" },
+        linkedin: { icon: "in", bg: "#0a66c2", fg: "#ffffff" },
+        x: { icon: "X", bg: "#111827", fg: "#ffffff" },
+        pinterest: { icon: "P", bg: "#bd081c", fg: "#ffffff" },
+        vimeo: { icon: "V", bg: "#1ab7ea", fg: "#ffffff" },
+        soundcloud: { icon: "SC", bg: "#f97316", fg: "#ffffff" },
+        vk: { icon: "VK", bg: "#4c75a3", fg: "#ffffff" },
+        whatsapp: { icon: "WA", bg: "#22c55e", fg: "#ffffff" },
+        "app-store": { icon: "APP", bg: "#2563eb", fg: "#ffffff" },
+        "play-store": { icon: "PLAY", bg: "#22c55e", fg: "#ffffff" },
+        gmail: { icon: "MAIL", bg: "#ef4444", fg: "#ffffff" },
+        calendar: { icon: "CAL", bg: "#475569", fg: "#ffffff" },
+        document: { icon: "DOC", bg: "#f59e0b", fg: "#ffffff" },
+        viber: { icon: "VB", bg: "#7c3aed", fg: "#ffffff" },
+        share: { icon: "SH", bg: "#0891b2", fg: "#ffffff" },
+        wifi: { icon: "WiFi", bg: "#0891b2", fg: "#ffffff" },
+        bitcoin: { icon: "B", bg: "#f7931a", fg: "#ffffff" },
+    } as const;
+
+    function setActiveButton(
+        containerId: string,
+        activeButton: HTMLButtonElement,
+    ) {
+        document
+            .querySelectorAll(`#${containerId} button`)
+            .forEach((button) => {
+                button.classList.remove("active", "border-brand-300", "bg-brand-50");
+                button.classList.add("border-slate-200");
+            });
+        activeButton.classList.add("active", "border-brand-300", "bg-brand-50");
+        activeButton.classList.remove("border-slate-200");
+    }
+
+    document.querySelectorAll<HTMLButtonElement>("[data-frame]").forEach((button) => {
+        button.addEventListener("click", () => {
+            activeFrameStyle = button.dataset.frame || "none";
+            setActiveButton("frame-options", button);
+            generateQRCode();
+        });
+    });
+
+    document.querySelectorAll<HTMLButtonElement>("[data-shape]").forEach((button) => {
+        button.addEventListener("click", () => {
+            activeModuleShape = button.dataset.shape || "square";
+            setActiveButton("module-shape-options", button);
+            generateQRCode();
+        });
+    });
+
+    document.querySelectorAll<HTMLButtonElement>("[data-finder]").forEach((button) => {
+        button.addEventListener("click", () => {
+            activeFinderStyle = button.dataset.finder || "square";
+            setActiveButton("finder-style-options", button);
+            generateQRCode();
+        });
+    });
+
+    document.querySelectorAll<HTMLButtonElement>("[data-logo]").forEach((button) => {
+        button.addEventListener("click", () => {
+            activePresetLogo = button.dataset.logo || "none";
+            setActiveButton("preset-logo-options", button);
+            if (activePresetLogo !== "none") {
+                qrLogoInput.value = "";
+                uploadedLogoDataUrl = "";
+                logoFilenameSpan.textContent = `Preset: ${activePresetLogo}`;
+                btnClearLogo.classList.remove("hidden");
+                levelSelect.value = "H";
+            } else {
+                logoFilenameSpan.textContent = "No logo selected";
+                btnClearLogo.classList.add("hidden");
+            }
+            generateQRCode();
+        });
+    });
 
     // 同步颜色输入框
     fgColorInput.addEventListener("input", (e) => {
@@ -613,11 +1274,18 @@ const description =
             bgColorInput.value = val;
         }
     });
+    framePhraseInput.addEventListener("input", () => generateQRCode());
+    frameColorInput.addEventListener("input", () => generateQRCode());
 
     // 监听 Logo 上传
     qrLogoInput.addEventListener("change", (e) => {
         const file = (e.target as HTMLInputElement).files?.[0];
         if (file) {
+            activePresetLogo = "none";
+            const noLogoButton = document.querySelector<HTMLButtonElement>(
+                '[data-logo="none"]',
+            );
+            if (noLogoButton) setActiveButton("preset-logo-options", noLogoButton);
             logoFilenameSpan.textContent = file.name;
             btnClearLogo.classList.remove("hidden");
             const reader = new FileReader();
@@ -635,6 +1303,11 @@ const description =
     btnClearLogo.addEventListener("click", () => {
         qrLogoInput.value = "";
         uploadedLogoDataUrl = "";
+        activePresetLogo = "none";
+        const noLogoButton = document.querySelector<HTMLButtonElement>(
+            '[data-logo="none"]',
+        );
+        if (noLogoButton) setActiveButton("preset-logo-options", noLogoButton);
         logoFilenameSpan.textContent = "No logo selected";
         btnClearLogo.classList.add("hidden");
         generateQRCode();
@@ -652,6 +1325,450 @@ const description =
         generateQRCode();
     });
 
+    [
+        platformPresetSelect,
+        platformThemeSelect,
+        platformTitleInput,
+        platformCaptionInput,
+    ].forEach((element) => {
+        element.addEventListener("input", () => {
+            updatePlatformBackground();
+        });
+        element.addEventListener("change", () => {
+            updatePlatformBackground();
+        });
+    });
+
+    function drawRoundedRect(
+        ctx: CanvasRenderingContext2D,
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        radius: number,
+    ) {
+        ctx.beginPath();
+        if (typeof ctx.roundRect === "function") {
+            ctx.roundRect(x, y, width, height, radius);
+        } else {
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(
+                x + width,
+                y + height,
+                x + width - radius,
+                y + height,
+            );
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+        }
+        ctx.closePath();
+    }
+
+    function wrapText(
+        ctx: CanvasRenderingContext2D,
+        text: string,
+        maxWidth: number,
+    ) {
+        const words = text.split(/\s+/).filter(Boolean);
+        const lines: string[] = [];
+        let line = "";
+        words.forEach((word) => {
+            const nextLine = line ? `${line} ${word}` : word;
+            if (ctx.measureText(nextLine).width > maxWidth && line) {
+                lines.push(line);
+                line = word;
+            } else {
+                line = nextLine;
+            }
+        });
+        if (line) lines.push(line);
+        return lines.slice(0, 3);
+    }
+
+    function loadImage(src: string) {
+        return new Promise<HTMLImageElement>((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.onerror = () => reject(new Error("Failed to load image."));
+            img.src = src;
+        });
+    }
+
+    function createPresetLogoDataUrl(preset: string) {
+        if (preset === "none") return "";
+        const config =
+            presetLogoConfig[preset as keyof typeof presetLogoConfig] ??
+            presetLogoConfig.chat;
+        const canvas = document.createElement("canvas");
+        canvas.width = 256;
+        canvas.height = 256;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return "";
+        ctx.fillStyle = config.bg;
+        drawRoundedRect(ctx, 10, 10, 236, 236, 54);
+        ctx.fill();
+        ctx.fillStyle = config.fg;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        const isLongMark = config.icon.length > 2;
+        ctx.font = isLongMark
+            ? "900 54px Arial, sans-serif"
+            : "900 112px Arial, sans-serif";
+        ctx.fillText(config.icon, 128, 132);
+        return canvas.toDataURL("image/png");
+    }
+
+    function isFinderModule(row: number, col: number, count: number) {
+        const inTopLeft = row < 7 && col < 7;
+        const inTopRight = row < 7 && col >= count - 7;
+        const inBottomLeft = row >= count - 7 && col < 7;
+        return inTopLeft || inTopRight || inBottomLeft;
+    }
+
+    function drawModule(
+        ctx: CanvasRenderingContext2D,
+        x: number,
+        y: number,
+        cell: number,
+        shape: string,
+        color: string,
+    ) {
+        const pad = cell * 0.08;
+        ctx.fillStyle = color;
+        if (shape === "circle") {
+            ctx.beginPath();
+            ctx.arc(x + cell / 2, y + cell / 2, cell * 0.42, 0, Math.PI * 2);
+            ctx.fill();
+            return;
+        }
+        if (shape === "rounded") {
+            drawRoundedRect(
+                ctx,
+                x + pad,
+                y + pad,
+                cell - pad * 2,
+                cell - pad * 2,
+                cell * 0.24,
+            );
+            ctx.fill();
+            return;
+        }
+        if (shape === "diamond") {
+            ctx.beginPath();
+            ctx.moveTo(x + cell / 2, y + pad);
+            ctx.lineTo(x + cell - pad, y + cell / 2);
+            ctx.lineTo(x + cell / 2, y + cell - pad);
+            ctx.lineTo(x + pad, y + cell / 2);
+            ctx.closePath();
+            ctx.fill();
+            return;
+        }
+        ctx.fillRect(x, y, cell, cell);
+    }
+
+    function drawFinder(
+        ctx: CanvasRenderingContext2D,
+        x: number,
+        y: number,
+        cell: number,
+        style: string,
+        fgColor: string,
+        bgColor: string,
+    ) {
+        const size = cell * 7;
+        const inner = cell * 3;
+        const innerOffset = cell * 2;
+        ctx.fillStyle = fgColor;
+        if (style === "circle") {
+            ctx.beginPath();
+            ctx.arc(x + size / 2, y + size / 2, size / 2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = bgColor;
+            ctx.beginPath();
+            ctx.arc(x + size / 2, y + size / 2, cell * 2.25, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = fgColor;
+            ctx.beginPath();
+            ctx.arc(x + size / 2, y + size / 2, inner / 2, 0, Math.PI * 2);
+            ctx.fill();
+            return;
+        }
+        const radius = style === "rounded" ? cell * 1.2 : 0;
+        drawRoundedRect(ctx, x, y, size, size, radius);
+        ctx.fill();
+        ctx.fillStyle = bgColor;
+        drawRoundedRect(ctx, x + cell, y + cell, cell * 5, cell * 5, radius * 0.7);
+        ctx.fill();
+        ctx.fillStyle = fgColor;
+        drawRoundedRect(
+            ctx,
+            x + innerOffset,
+            y + innerOffset,
+            inner,
+            inner,
+            radius * 0.45,
+        );
+        ctx.fill();
+    }
+
+    function getQrModule(qr: any, row: number, col: number) {
+        if (typeof qr.modules.get === "function") {
+            return qr.modules.get(row, col);
+        }
+        return Boolean(qr.modules.data[row * qr.modules.size + col]);
+    }
+
+    async function renderStyledQrCanvas(
+        content: string,
+        size: number,
+        level: "L" | "M" | "Q" | "H",
+        fgColor: string,
+        bgColor: string,
+        logoDataUrl: string,
+    ) {
+        const qr = (QRCode as any).create(content, {
+            errorCorrectionLevel: level,
+        });
+        const count = qr.modules.size;
+        const marginCells = 4;
+        const cell = Math.floor(size / (count + marginCells * 2));
+        const qrSize = cell * (count + marginCells * 2);
+        const frameStyle = activeFrameStyle;
+        const framePhrase = framePhraseInput.value.trim() || "SCAN ME";
+        const frameColor = frameColorInput.value || fgColor;
+        const phraseHeight =
+            frameStyle === "caption-top" || frameStyle === "caption-bottom"
+                ? Math.round(qrSize * 0.16)
+                : 0;
+        const cardPadding = frameStyle === "card" ? Math.round(qrSize * 0.1) : 0;
+        const canvas = document.createElement("canvas");
+        canvas.width = qrSize + cardPadding * 2;
+        canvas.height = qrSize + phraseHeight + cardPadding * 2;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return canvas;
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        if (frameStyle === "card") {
+            ctx.fillStyle = frameColor;
+            drawRoundedRect(ctx, 0, 0, canvas.width, canvas.height, qrSize * 0.08);
+            ctx.fill();
+            ctx.fillStyle = bgColor;
+            drawRoundedRect(
+                ctx,
+                cardPadding * 0.45,
+                cardPadding * 0.45,
+                canvas.width - cardPadding * 0.9,
+                canvas.height - cardPadding * 0.9,
+                qrSize * 0.055,
+            );
+            ctx.fill();
+        }
+
+        if (frameStyle === "caption-top") {
+            ctx.fillStyle = frameColor;
+            ctx.font = `800 ${Math.round(phraseHeight * 0.42)}px Arial, sans-serif`;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(framePhrase, canvas.width / 2, phraseHeight / 2);
+        }
+
+        const offsetX = cardPadding;
+        const offsetY =
+            cardPadding + (frameStyle === "caption-top" ? phraseHeight : 0);
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(offsetX, offsetY, qrSize, qrSize);
+
+        for (let row = 0; row < count; row += 1) {
+            for (let col = 0; col < count; col += 1) {
+                if (!getQrModule(qr, row, col) || isFinderModule(row, col, count)) {
+                    continue;
+                }
+                drawModule(
+                    ctx,
+                    offsetX + (col + marginCells) * cell,
+                    offsetY + (row + marginCells) * cell,
+                    cell,
+                    activeModuleShape,
+                    fgColor,
+                );
+            }
+        }
+
+        const finderPositions = [
+            [0, 0],
+            [0, count - 7],
+            [count - 7, 0],
+        ];
+        finderPositions.forEach(([row, col]) => {
+            drawFinder(
+                ctx,
+                offsetX + (col + marginCells) * cell,
+                offsetY + (row + marginCells) * cell,
+                cell,
+                activeFinderStyle,
+                fgColor,
+                bgColor,
+            );
+        });
+
+        if (logoDataUrl) {
+            const logoImage = await loadImage(logoDataUrl);
+            const logoPercent = parseInt(logoSizeSlider.value, 10) / 100;
+            const logoSize = qrSize * logoPercent;
+            const logoX = offsetX + (qrSize - logoSize) / 2;
+            const logoY = offsetY + (qrSize - logoSize) / 2;
+            if (logoBorderCheckbox.checked) {
+                const padding = logoSize * 0.16;
+                ctx.fillStyle = bgColor;
+                drawRoundedRect(
+                    ctx,
+                    logoX - padding,
+                    logoY - padding,
+                    logoSize + padding * 2,
+                    logoSize + padding * 2,
+                    logoSize * 0.18,
+                );
+                ctx.fill();
+            }
+            ctx.drawImage(logoImage, logoX, logoY, logoSize, logoSize);
+        }
+
+        if (frameStyle === "caption-bottom") {
+            ctx.fillStyle = frameColor;
+            ctx.font = `800 ${Math.round(phraseHeight * 0.42)}px Arial, sans-serif`;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(
+                framePhrase,
+                canvas.width / 2,
+                canvas.height - phraseHeight / 2,
+            );
+        }
+
+        return canvas;
+    }
+
+    async function updatePlatformBackground() {
+        const presetKey = platformPresetSelect.value as
+            | "none"
+            | keyof typeof platformPresets;
+        if (presetKey === "none" || !currentPngDataUrl) {
+            platformPreviewCard.classList.add("hidden");
+            platformPreviewImage.src = "";
+            currentPlatformDataUrl = "";
+            return;
+        }
+
+        const preset = platformPresets[presetKey];
+        const theme =
+            platformThemes[platformThemeSelect.value as keyof typeof platformThemes] ??
+            platformThemes.blue;
+        const canvas = document.createElement("canvas");
+        canvas.width = preset.width;
+        canvas.height = preset.height;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        const gradient = ctx.createLinearGradient(0, 0, preset.width, preset.height);
+        gradient.addColorStop(0, theme.start);
+        gradient.addColorStop(1, theme.end);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, preset.width, preset.height);
+
+        ctx.fillStyle = "rgba(255, 255, 255, 0.22)";
+        ctx.beginPath();
+        ctx.arc(preset.width * 0.18, preset.height * 0.18, preset.width * 0.18, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "rgba(255, 255, 255, 0.14)";
+        ctx.beginPath();
+        ctx.arc(preset.width * 0.86, preset.height * 0.82, preset.width * 0.22, 0, Math.PI * 2);
+        ctx.fill();
+
+        const isTall = preset.height > preset.width;
+        const isWide = preset.width / preset.height > 1.5;
+        const safeMargin = Math.round(Math.min(preset.width, preset.height) * 0.075);
+        const qrSize = Math.round(
+            isTall
+                ? preset.width * 0.62
+                : isWide
+                  ? preset.height * 0.44
+                  : preset.width * 0.42,
+        );
+        const cardPadding = Math.round(qrSize * 0.1);
+        const cardSize = qrSize + cardPadding * 2;
+        const qrImageForPoster = await loadImage(currentPngDataUrl);
+
+        let cardX = Math.round((preset.width - cardSize) / 2);
+        let cardY = Math.round(preset.height * 0.42);
+        if (isWide) {
+            cardX = preset.width - safeMargin - cardSize;
+            cardY = Math.round((preset.height - cardSize) / 2);
+        }
+
+        ctx.shadowColor = "rgba(15, 23, 42, 0.18)";
+        ctx.shadowBlur = Math.round(cardSize * 0.05);
+        ctx.shadowOffsetY = Math.round(cardSize * 0.025);
+        ctx.fillStyle = theme.card;
+        drawRoundedRect(ctx, cardX, cardY, cardSize, cardSize, Math.round(cardSize * 0.08));
+        ctx.fill();
+        ctx.shadowColor = "transparent";
+        ctx.drawImage(
+            qrImageForPoster,
+            cardX + cardPadding,
+            cardY + cardPadding,
+            qrSize,
+            qrSize,
+        );
+
+        const headline = platformTitleInput.value.trim() || "Scan to open";
+        const caption =
+            platformCaptionInput.value.trim() || "Created with QR Barcode Tools";
+        const textX = isWide ? safeMargin : safeMargin;
+        const textMaxWidth = isWide
+            ? cardX - safeMargin * 2
+            : preset.width - safeMargin * 2;
+        const titleFontSize = Math.round(
+            isTall ? preset.width * 0.08 : isWide ? preset.height * 0.085 : preset.width * 0.065,
+        );
+        const captionFontSize = Math.round(titleFontSize * 0.34);
+        const titleY = isWide ? Math.round(preset.height * 0.28) : safeMargin + titleFontSize;
+
+        ctx.textAlign = "left";
+        ctx.fillStyle = theme.title;
+        ctx.font = `800 ${titleFontSize}px Arial, sans-serif`;
+        const headlineLines = wrapText(ctx, headline, textMaxWidth);
+        headlineLines.forEach((line, index) => {
+            ctx.fillText(line, textX, titleY + index * titleFontSize * 1.08);
+        });
+
+        ctx.fillStyle = theme.text;
+        ctx.font = `600 ${captionFontSize}px Arial, sans-serif`;
+        const captionY =
+            titleY + headlineLines.length * titleFontSize * 1.08 + captionFontSize * 1.6;
+        wrapText(ctx, caption, textMaxWidth).forEach((line, index) => {
+            ctx.fillText(line, textX, captionY + index * captionFontSize * 1.4);
+        });
+
+        ctx.fillStyle = theme.accent;
+        ctx.font = `700 ${Math.round(captionFontSize * 0.86)}px Arial, sans-serif`;
+        ctx.fillText(
+            "Static QR code - no tracking",
+            safeMargin,
+            preset.height - safeMargin,
+        );
+
+        currentPlatformDataUrl = canvas.toDataURL("image/png");
+        platformPreviewImage.src = currentPlatformDataUrl;
+        platformSizeLabel.textContent = `${preset.label} · ${preset.width} x ${preset.height}`;
+        platformPreviewCard.classList.remove("hidden");
+    }
+
     // 生成主函数
     async function generateQRCode() {
         const content = contentInput.value.trim();
@@ -663,7 +1780,8 @@ const description =
         errorMessage.classList.add("hidden");
 
         const size = parseInt(sizeSelect.value, 10);
-        const level = (uploadedLogoDataUrl ? "H" : levelSelect.value) as
+        const hasLogo = Boolean(uploadedLogoDataUrl || activePresetLogo !== "none");
+        const level = (hasLogo ? "H" : levelSelect.value) as
             | "L"
             | "M"
             | "Q"
@@ -672,145 +1790,38 @@ const description =
         const bgColor = bgColorInput.value;
 
         try {
-            // 1. 生成基础/带 Logo 的 Canvas
-            const canvas = document.createElement("canvas");
-            await QRCode.toCanvas(canvas, content, {
-                width: size,
-                margin: 2,
-                errorCorrectionLevel: level,
-                color: {
-                    dark: fgColor,
-                    light: bgColor,
-                },
-            });
-
-            // 2. 如果有 Logo，则绘制到 Canvas 中央
-            if (uploadedLogoDataUrl) {
-                await new Promise<void>((resolve, reject) => {
-                    const img = new Image();
-                    img.crossOrigin = "anonymous";
-                    img.onload = () => {
-                        const ctx = canvas.getContext("2d");
-                        if (ctx) {
-                            const logoPercent =
-                                parseInt(logoSizeSlider.value, 10) / 100;
-                            const logoSize = size * logoPercent;
-                            const logoX = (size - logoSize) / 2;
-                            const logoY = (size - logoSize) / 2;
-
-                            if (logoBorderCheckbox.checked) {
-                                // 在中央绘制白底矩形/圆角矩形
-                                const padding = logoSize * 0.15;
-                                ctx.fillStyle = bgColor;
-                                ctx.beginPath();
-                                // 圆角矩形支持
-                                if (typeof ctx.roundRect === "function") {
-                                    ctx.roundRect(
-                                        logoX - padding,
-                                        logoY - padding,
-                                        logoSize + padding * 2,
-                                        logoSize + padding * 2,
-                                        logoSize * 0.15,
-                                    );
-                                } else {
-                                    ctx.rect(
-                                        logoX - padding,
-                                        logoY - padding,
-                                        logoSize + padding * 2,
-                                        logoSize + padding * 2,
-                                    );
-                                }
-                                ctx.fill();
-                            }
-
-                            // 绘制 logo 图像
-                            ctx.drawImage(
-                                img,
-                                logoX,
-                                logoY,
-                                logoSize,
-                                logoSize,
-                            );
-                        }
-                        resolve();
-                    };
-                    img.onerror = (err) => reject(err);
-                    img.src = uploadedLogoDataUrl;
-                });
-            }
-
-            // 输出 PNG dataURL
+            const logoDataUrl =
+                uploadedLogoDataUrl || createPresetLogoDataUrl(activePresetLogo);
+            const canvas = await renderStyledQrCanvas(
+                content,
+                size,
+                level,
+                fgColor,
+                bgColor,
+                logoDataUrl,
+            );
             const pngUrl = canvas.toDataURL("image/png");
             currentPngDataUrl = pngUrl;
             qrImage.src = pngUrl;
 
-            // 3. 生成 SVG 并合并 Logo 嵌入
-            let svgString = await QRCode.toString(content, {
+            currentSvgContent = await QRCode.toString(content, {
                 type: "svg",
                 width: size,
-                margin: 2,
+                margin: 4,
                 errorCorrectionLevel: level,
                 color: {
                     dark: fgColor,
                     light: bgColor,
                 },
             });
-
-            if (uploadedLogoDataUrl) {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(svgString, "image/svg+xml");
-                const svgEl = doc.querySelector("svg");
-                if (svgEl) {
-                    const logoPercent =
-                        parseInt(logoSizeSlider.value, 10) / 100;
-                    const logoSize = size * logoPercent;
-                    const logoX = (size - logoSize) / 2;
-                    const logoY = (size - logoSize) / 2;
-
-                    if (logoBorderCheckbox.checked) {
-                        const padding = logoSize * 0.15;
-                        const rect = doc.createElementNS(
-                            "http://www.w3.org/2000/svg",
-                            "rect",
-                        );
-                        rect.setAttribute("x", (logoX - padding).toString());
-                        rect.setAttribute("y", (logoY - padding).toString());
-                        rect.setAttribute(
-                            "width",
-                            (logoSize + padding * 2).toString(),
-                        );
-                        rect.setAttribute(
-                            "height",
-                            (logoSize + padding * 2).toString(),
-                        );
-                        rect.setAttribute("fill", bgColor);
-                        rect.setAttribute("rx", (logoSize * 0.15).toString());
-                        rect.setAttribute("ry", (logoSize * 0.15).toString());
-                        svgEl.appendChild(rect);
-                    }
-
-                    const image = doc.createElementNS(
-                        "http://www.w3.org/2000/svg",
-                        "image",
-                    );
-                    image.setAttribute("href", uploadedLogoDataUrl);
-                    image.setAttribute("x", logoX.toString());
-                    image.setAttribute("y", logoY.toString());
-                    image.setAttribute("width", logoSize.toString());
-                    image.setAttribute("height", logoSize.toString());
-                    svgEl.appendChild(image);
-
-                    const serializer = new XMLSerializer();
-                    svgString = serializer.serializeToString(doc);
-                }
-            }
-            currentSvgContent = svgString;
 
             // 4. UI 切换
             previewPlaceholder.classList.add("hidden");
             qrContainer.classList.remove("hidden");
             actionButtons.classList.remove("hidden");
+            advancedStyleNote.classList.remove("hidden");
             btnCopyUrl.classList.remove("hidden");
+            await updatePlatformBackground();
         } catch (err: any) {
             console.error(err);
             errorMessage.textContent = `Error generating QR Code: ${err.message || err}`;
@@ -834,6 +1845,32 @@ const description =
         fgColorText.value = "#000000";
         bgColorInput.value = "#ffffff";
         bgColorText.value = "#ffffff";
+        framePhraseInput.value = "SCAN ME";
+        frameColorInput.value = "#0f172a";
+        activeFrameStyle = "none";
+        activeModuleShape = "square";
+        activeFinderStyle = "square";
+        activePresetLogo = "none";
+        const noFrameButton = document.querySelector<HTMLButtonElement>(
+            '[data-frame="none"]',
+        );
+        const squareShapeButton = document.querySelector<HTMLButtonElement>(
+            '[data-shape="square"]',
+        );
+        const squareFinderButton = document.querySelector<HTMLButtonElement>(
+            '[data-finder="square"]',
+        );
+        const noLogoButton = document.querySelector<HTMLButtonElement>(
+            '[data-logo="none"]',
+        );
+        if (noFrameButton) setActiveButton("frame-options", noFrameButton);
+        if (squareShapeButton) {
+            setActiveButton("module-shape-options", squareShapeButton);
+        }
+        if (squareFinderButton) {
+            setActiveButton("finder-style-options", squareFinderButton);
+        }
+        if (noLogoButton) setActiveButton("preset-logo-options", noLogoButton);
 
         // Reset logo inputs
         qrLogoInput.value = "";
@@ -843,6 +1880,10 @@ const description =
         logoSizeSlider.value = "20";
         logoSizeValSpan.textContent = "20";
         logoBorderCheckbox.checked = true;
+        platformPresetSelect.value = "none";
+        platformThemeSelect.value = "blue";
+        platformTitleInput.value = "Scan to open";
+        platformCaptionInput.value = "Created with QR Barcode Tools";
 
         errorMessage.classList.add("hidden");
 
@@ -850,10 +1891,14 @@ const description =
         previewPlaceholder.classList.remove("hidden");
         qrContainer.classList.add("hidden");
         actionButtons.classList.add("hidden");
+        advancedStyleNote.classList.add("hidden");
         btnCopyUrl.classList.add("hidden");
         qrImage.src = "";
         currentPngDataUrl = "";
         currentSvgContent = "";
+        currentPlatformDataUrl = "";
+        platformPreviewCard.classList.add("hidden");
+        platformPreviewImage.src = "";
     });
 
     // 下载 PNG
@@ -881,6 +1926,17 @@ const description =
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(blobUrl);
+    });
+
+    btnDownloadPlatform.addEventListener("click", () => {
+        if (!currentPlatformDataUrl) return;
+        const preset = platformPresetSelect.value || "platform";
+        const link = document.createElement("a");
+        link.href = currentPlatformDataUrl;
+        link.download = `qr-code-${preset}-${Date.now()}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     });
 
     // 复制 Data URI
