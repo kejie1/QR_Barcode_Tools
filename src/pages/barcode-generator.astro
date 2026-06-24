@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const title = "Barcode Generator - Create Free Barcodes Online";
+const title = "Barcode Generator - Create Barcodes Online Free";
 const description =
-    "Generate Code 128, EAN-13, and UPC-A barcodes online in your browser. Download barcode images for labels, testing, and internal use.";
+    "Create a barcode online for free. Generate Code 128, EAN-13 13 digit barcode, and UPC-A images in your browser for labels, testing, and internal use.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -38,12 +38,15 @@ const description =
             <h1
                 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight"
             >
-                Free Online <span class="text-gradient">Barcode Generator</span>
+                Create a Barcode with a Free <span class="text-gradient"
+                    >Barcode Generator</span
+                >
             </h1>
             <p class="text-slate-600 mt-2 max-w-2xl">
-                Generate premium-quality barcode graphics instantly in your
-                browser. Choose formats, customize dimensions, show or hide
-                text, and download vectors or high-res raster images.
+                Use this barcode generator to create Code 128, UPC-A, and
+                EAN-13 barcode images in your browser. Enter your data, choose a
+                format, then download PNG or SVG files for labels, testing, or
+                internal workflows.
             </p>
         </div>
 
@@ -70,7 +73,7 @@ const description =
                         type="text"
                         id="barcode-content"
                         class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-800 placeholder-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none transition-all text-sm font-mono"
-                        placeholder="Enter data to encode..."
+                        placeholder="Enter text, numbers, or a 13 digit barcode value..."
                     />
                     <p
                         id="error-message"
@@ -164,7 +167,7 @@ const description =
                         id="btn-generate"
                         class="brand-gradient hover:brand-gradient-hover text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors flex-grow"
                     >
-                        Generate Barcode
+                        Create Barcode
                     </button>
                     <button
                         id="btn-reset"
@@ -368,7 +371,7 @@ const description =
                         href="/ean-13-barcode-generator/"
                         class="flex items-center space-x-2 text-sm font-semibold text-brand-600 hover:text-brand-700 bg-brand-50/50 hover:bg-brand-50 p-3 rounded-xl transition-colors"
                     >
-                        <span>📦 EAN-13 Barcode Generator</span>
+                        <span>EAN-13 13 Digit Barcode Generator</span>
                     </a>
                 </div>
             </div>

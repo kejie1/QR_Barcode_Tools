@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const title = "EAN-13 Barcode Generator - Free Retail Barcode Tool";
+const title = "EAN-13 Barcode Generator - Create 13 Digit Barcodes";
 const description =
-    "Create standard EAN-13 commercial retail barcodes online. Features automatic 13th-digit checksum calculation and validation helper.";
+    "Create an EAN-13 barcode online for free. Enter 12 digits to calculate the 13th checksum digit or validate an existing 13 digit barcode.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -38,12 +38,13 @@ const description =
             <h1
                 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight"
             >
-                Free <span class="text-gradient">EAN-13 Barcode Generator</span>
+                Free <span class="text-gradient">EAN-13 Barcode Generator</span
+                > for 13 Digit Barcodes
             </h1>
             <p class="text-slate-600 mt-2 max-w-2xl">
-                Generate compliant International Article Numbers (EAN-13) used
-                on product labels globally. Includes auto-completion of the 13th
-                checksum digit.
+                Create an EAN-13 barcode for a 13 digit retail code. Enter 12
+                digits to add the checksum automatically, or paste an existing
+                13 digit barcode number to validate and download it.
             </p>
         </div>
 
@@ -94,7 +95,7 @@ const description =
                         id="btn-generate"
                         class="brand-gradient hover:brand-gradient-hover text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors flex-grow"
                     >
-                        Generate EAN-13 Barcode
+                        Create EAN-13 Barcode
                     </button>
                     <button
                         id="btn-reset"
@@ -261,7 +262,7 @@ const description =
                         Usage in Global Logistics
                     </h3>
                     <p class="text-slate-600 leading-relaxed text-sm">
-                        EAN-13 barcodes are standard barcode formats used
+                        EAN-13 barcodes are 13 digit barcode formats used
                         globally on physical packages in supermarkets, physical
                         stores, and e-commerce nodes. They allow check-out laser
                         scanners to identify inventory databases

@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const title = "QR Code Generator - Create Free Static QR Codes Online";
+const title = "QR Code Generator - Make a QR Code for a Website";
 const description =
-    "Create a free static QR code for text, links, WiFi, and contact details in your browser. No sign-up, no upload, no tracking.";
+    "Make a QR code for a website URL, text, WiFi, or contact details. Create a free static QR code in your browser with no sign-up or tracking.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -38,12 +38,14 @@ const description =
             <h1
                 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight"
             >
-                Free Static <span class="text-gradient">QR Code Generator</span>
+                Make a QR Code for a Website with a Free <span
+                    class="text-gradient">QR Code Generator</span
+                >
             </h1>
             <p class="text-slate-600 mt-2 max-w-2xl">
-                Generate premium-quality, static QR codes instantly. Custom
-                colors, sizes, and correction levels, 100% processed locally in
-                your browser.
+                Paste a website URL or text to create a static QR code in your
+                browser. Customize size, colors, frame, and logo, then download
+                a PNG or SVG without sign-up or tracking.
             </p>
         </div>
 
@@ -57,7 +59,7 @@ const description =
                         <label
                             for="qr-content"
                             class="block text-sm font-bold text-slate-700"
-                            >QR Code Content (Text or URL)</label
+                            >QR Code Content (Website URL or Text)</label
                         >
                         <button
                             id="btn-example"
@@ -70,7 +72,7 @@ const description =
                         id="qr-content"
                         rows="4"
                         class="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-800 placeholder-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none transition-all text-sm"
-                        placeholder="Type your text or paste a URL here..."
+                        placeholder="Paste a website URL such as https://example.com..."
                     ></textarea>
                     <p
                         id="error-message"
@@ -701,7 +703,7 @@ const description =
                         id="btn-generate"
                         class="brand-gradient hover:brand-gradient-hover text-white font-semibold px-6 py-3 rounded-xl shadow-md transition-colors flex-grow"
                     >
-                        Generate QR Code
+                        Make QR Code
                     </button>
                     <button
                         id="btn-reset"
@@ -991,7 +993,7 @@ const description =
                         href="/url-qr-code-generator/"
                         class="flex items-center space-x-2 text-sm font-semibold text-brand-600 hover:text-brand-700 bg-brand-50/50 hover:bg-brand-50 p-3 rounded-xl transition-colors"
                     >
-                        <span>🔗 URL QR Code Generator</span>
+                        <span>Website URL QR Code Generator</span>
                     </a>
                     <a
                         href="/vcard-qr-code-generator/"
