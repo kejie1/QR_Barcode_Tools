@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "EAN-13 Check Digit Calculator";
+const description =
+    "Calculate the EAN-13 check digit from the first 12 digits and generate a complete 13-digit barcode number in your browser.";
+---
+
+<BaseLayout title={title} description={description}>
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav class="mb-8 text-sm text-slate-500">
+            <a href="/" class="hover:text-brand-600">Home</a>
+            <span class="mx-2">/</span>
+            <span>EAN-13 Check Digit Calculator</span>
+        </nav>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <p class="text-sm font-bold uppercase tracking-wide text-brand-600">Barcode validation</p>
+            <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                EAN-13 Check Digit Calculator
+            </h1>
+            <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+                Enter the first 12 digits of an EAN-13 code to calculate the final check digit. The calculation runs locally in your browser.
+            </p>
+        </section>
+
+        <section class="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <label for="ean-input" class="block text-sm font-bold text-slate-700">First 12 digits</label>
+            <div class="mt-3 flex flex-col gap-3 sm:flex-row">
+                <input id="ean-input" inputmode="numeric" maxlength="12" placeholder="400638133393" class="w-full rounded-xl border border-slate-300 px-4 py-3 font-mono text-lg focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
+                <button id="ean-calc" class="rounded-xl bg-brand-600 px-5 py-3 text-sm font-bold text-white hover:bg-brand-700">Calculate</button>
+            </div>
+            <div id="ean-result" class="mt-5 rounded-xl bg-slate-50 p-5 text-sm leading-6 text-slate-700">
+                Enter 12 digits to calculate the check digit.
+            </div>
+            <div class="mt-6">
+                <a href="/ean-13-barcode-generator/" class="text-sm font-bold text-brand-600 hover:text-brand-700">Generate the EAN-13 barcode image &rarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const input = document.getElementById('ean-input');
+        const button = document.getElementById('ean-calc');
+        const result = document.getElementById('ean-result');
+
+        function calculateCheckDigit(value) {
+            const digits = value.split('').map(Number);
+            const sum = digits.reduce((total, digit, index) => {
+                return total + digit * (index % 2 === 0 ? 1 : 3);
+            }, 0);
+            return (10 - (sum % 10)) % 10;
+        }
+
+        function updateResult() {
+            const value = input.value.replace(/\D/g, '').slice(0, 12);
+            input.value = value;
+            if (value.length !== 12) {
+                result.textContent = 'Enter exactly 12 digits to calculate the EAN-13 check digit.';
+                return;
+            }
+            const checkDigit = calculateCheckDigit(value);
+            result.innerHTML = `<strong>Check digit:</strong> ${checkDigit}<br><strong>Complete EAN-13:</strong> <code>${value}${checkDigit}</code>`;
+        }
+
+        input.addEventListener('input', updateResult);
+        button.addEventListener('click', updateResult);
+    </script>
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Free Barcode Generator for Products";
+const description =
+    "Generate product barcodes for labels, inventory drafts, and packaging mockups. Learn when to use EAN-13, Code 128, or another barcode format.";
+---
+
+<BaseLayout title={title} description={description}>
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav class="mb-8 text-sm text-slate-500">
+            <a href="/" class="hover:text-brand-600">Home</a>
+            <span class="mx-2">/</span>
+            <span>Product Barcode Generator</span>
+        </nav>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <p class="text-sm font-bold uppercase tracking-wide text-brand-600">Product labels</p>
+            <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                Free Barcode Generator for Products
+            </h1>
+            <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+                Use this product barcode workflow for packaging mockups, internal labels, warehouse tests, and inventory drafts. Retail barcodes usually need official GS1 numbers, but browser-generated images are useful for layout and testing.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+                <a href="/barcode-generator/" class="rounded-xl bg-brand-600 px-5 py-3 text-sm font-bold text-white hover:bg-brand-700">Open Barcode Generator</a>
+                <a href="/ean-13-barcode-generator/" class="rounded-xl border border-slate-200 px-5 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50">EAN-13 Generator</a>
+            </div>
+        </section>
+
+        <section class="mt-10 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-slate-900">Which barcode should I choose?</h2>
+            <div class="mt-6 grid gap-5 md:grid-cols-2">
+                <div class="rounded-xl bg-slate-50 p-5">
+                    <h3 class="font-bold text-slate-900">EAN-13 for retail-style product codes</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-600">Use EAN-13 when the number is a 13-digit retail product identifier or when you need a retail-style label mockup.</p>
+                </div>
+                <div class="rounded-xl bg-slate-50 p-5">
+                    <h3 class="font-bold text-slate-900">Code 128 for internal labels</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-600">Use Code 128 for SKU labels, batch IDs, shelf tags, asset IDs, and mixed letters or numbers.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
